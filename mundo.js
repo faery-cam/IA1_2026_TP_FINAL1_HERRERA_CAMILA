@@ -1,3 +1,4 @@
+//en esta clase unicamente manejamos la administración de cada escena, como el recorrerlas, mandar cuál se tiene que dibujar o si es q el usuario elije una al azar
 class Mundo {
     constructor() {
         this.escenas = [];

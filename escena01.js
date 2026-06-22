@@ -1,5 +1,4 @@
 class PantallaInicio extends Escena {
-
     constructor() {
         super();
     }

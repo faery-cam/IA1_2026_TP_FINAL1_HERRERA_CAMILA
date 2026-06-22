@@ -1,13 +1,14 @@
 //escena general donde definimos las propiedades base
 class Escena {
     constructor() {
-        this.hud = new BotonesHUD(); //
+        this.hud = new BotonesHUD(); //creamos el objeto que tiene el hud
     }
 
     draw() {
         this.hud.draw();
     }
 
+    //cambia de escena con las flechas izq/der
     keyPressed(tecla) {
         if (tecla === LEFT_ARROW) {
             mundo.escenaPrevia();
@@ -16,13 +17,16 @@ class Escena {
         }
     }
 
+    //maneja los clicks del hud
     mouseClicked() {
         this.hud.mouseClicked();
     }
 }
 
+//clase donde se crea el hud y se maneja cada boton
 class BotonesHUD {
 
+    //ubicamos datos base de cada boton
     constructor() {
         this.inicio = {
             x: 140,
@@ -50,6 +54,7 @@ class BotonesHUD {
         };
     }
 
+    //dibujamos cada boton y le damos un color cuando el usuario hace hover, unicamente  parte visual
     draw() {//botones 20x20
         fill(this.hitbox(this.inicio) ? "pink" : 255)
         rect(140, 370, 20, 20);//inicio
@@ -64,19 +69,20 @@ class BotonesHUD {
         circle(250, 380, 20);//config
     }
 
-
+    //define en base a los datos que guardamos en el constructor el area que ocupa el boton que se envie como parametro, creando una "hitbox" o un rect invisible por donde pasa el mouse
     hitbox(btn) {
         return (
             mouseX > btn.x && mouseX < btn.x + btn.size &&
             mouseY > btn.y && mouseY < btn.y + btn.size);
     }
 
+    //maneja los clicks que ocurran sobre cada boton y ejecuta la acción correspondiente
     mouseClicked() {
         if (this.hitbox(this.inicio)) {
             this.inicio.accion();
         }
         if (this.hitbox(this.prev)) {
-           this.prev.accion();
+            this.prev.accion();
         }
         if (this.hitbox(this.sig)) {
             this.sig.accion();
