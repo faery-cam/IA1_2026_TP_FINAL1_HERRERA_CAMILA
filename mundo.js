@@ -7,12 +7,12 @@ class Mundo {
 
     addEscena(e) {
         this.escenas.push(e);
-        if (this.indiceActual == null) this.elegirEscena = 0;
+        if (this.indiceActual == null) this.elegirEscena(0);
     }
 
     elegirEscena(i) {
         if (i < 0 || i >= this.escenas.length) {
-            this.escenaActual = 0; //en caso de algun error vuelve a la pantalla de inicio
+          i = 0; //en caso de algun error vuelve a la pantalla de inicio
         }
 
         this.escenaActual = this.escenas[i];

@@ -1,5 +1,9 @@
 class PantallaInicio extends Escena {
+    constructor() {
+        super();
+    }
+
     draw() {
-        text('pantall inicial', 10, 10);
+        text('pantalla inicial', 10, 10);
     }
 }

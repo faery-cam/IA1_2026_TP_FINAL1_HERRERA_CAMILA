@@ -15,7 +15,7 @@ function setup() {
 
 function draw() {
   background(220);
-  mundo.escenaActual;
+  mundo.escenaActual.draw();
 }
 
 
