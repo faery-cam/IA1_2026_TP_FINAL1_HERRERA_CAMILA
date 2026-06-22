@@ -3,6 +3,7 @@ class PantallaFinal extends Escena {
         super();
     }
     draw() {
+        super.draw();
         text('pantalla final', 200, 200);
     }
 }

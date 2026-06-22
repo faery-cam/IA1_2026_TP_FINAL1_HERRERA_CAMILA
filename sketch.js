@@ -18,7 +18,9 @@ function draw() {
   mundo.escenaActual.draw();
 }
 
-
+function mouseClicked() {
+  mundo.escenaActual.mouseClicked();
+}
 
 function keyPressed() {
   if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {

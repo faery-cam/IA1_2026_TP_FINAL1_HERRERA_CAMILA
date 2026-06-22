@@ -1,7 +1,11 @@
+//escena general donde definimos las propiedades base
 class Escena {
+    constructor() {
+        this.hud = new BotonesHUD(); //
+    }
 
     draw() {
-        text("Draw por defecto", width / 2, height / 2);
+        this.hud.draw();
     }
 
     keyPressed(tecla) {
@@ -12,4 +16,73 @@ class Escena {
         }
     }
 
+    mouseClicked() {
+        this.hud.mouseClicked();
+    }
+}
+
+class BotonesHUD {
+
+    constructor() {
+        this.inicio = {
+            x: 140,
+            y: 370,
+            size: 20,
+            accion: () => mundo.elegirEscena(0),
+        };
+        this.prev = {
+            x: 170,
+            y: 370,
+            size: 20,
+            accion: () => mundo.escenaPrevia(),
+        };
+        this.sig = {
+            x: 210,
+            y: 370,
+            size: 20,
+            accion: () => mundo.escenaSiguiente(),
+        };
+        this.config = {
+            x: 240,
+            y: 370,
+            size: 20,
+            accion: () => mundo.elegirEscena(0),
+        };
+    }
+
+    draw() {//botones 20x20
+        fill(this.hitbox(this.inicio) ? "pink" : 255)
+        rect(140, 370, 20, 20);//inicio
+
+        fill(this.hitbox(this.prev) ? "pink" : 255)
+        triangle(170, 380, 190, 370, 190, 390);//prev
+
+        fill(this.hitbox(this.sig) ? "pink" : 255)
+        triangle(210, 370, 210, 390, 230, 380);//sig
+
+        fill(this.hitbox(this.config) ? "pink" : 255)
+        circle(250, 380, 20);//config
+    }
+
+
+    hitbox(btn) {
+        return (
+            mouseX > btn.x && mouseX < btn.x + btn.size &&
+            mouseY > btn.y && mouseY < btn.y + btn.size);
+    }
+
+    mouseClicked() {
+        if (this.hitbox(this.inicio)) {
+            this.inicio.accion();
+        }
+        if (this.hitbox(this.prev)) {
+           this.prev.accion();
+        }
+        if (this.hitbox(this.sig)) {
+            this.sig.accion();
+        }
+        if (this.hitbox(this.config)) {
+            this.config.accion();
+        }
+    }
 }
