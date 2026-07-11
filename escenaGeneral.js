@@ -2,6 +2,7 @@
 class Escena {
     constructor() {
         this.hud = new HUD(); //creamos el objeto que tiene el hud
+        this.ventana = new Ventana();
     }
 
     draw() {

@@ -1,6 +1,12 @@
 class PantallaInicio extends Escena {
     constructor() {
         super();
+
+        this.jugar = new Boton(150, 100, 100, 30, () => mundo.elegirEscena(1));
+        this.comoJugar = new Boton(130, 140, 140, 30);
+        this.elegirEscena = new Boton(120, 180, 160, 30);
+        this.configuracion = new Boton(120, 220, 160, 30);
+        this.extras = new Boton(160, 260, 80, 30);
     }
 
     draw() {
@@ -18,30 +24,11 @@ class PantallaInicio extends Escena {
         text("Configuracion", 200, 240);
         text("Extras", 200, 280);
 
-        rect(80, 80, 240, 240, 10);
-        text("Música", 200, 140);
-        text("Fx", 200, 180);
-        text("Menú principal", 200, 220);
-
-        rect(60, 150, 280, 100, 10);
-        textSize(20);
-        text("¿Desea abandonar la partida?", 200, 190);
-        text("Sí", 130, 230);
-        text("No", 270, 230);
-
-        rect(10, 10, 380, 380, 10);
-        text("Elegir escena", 200, 50);
-        rect(30, 80, 150, 70, 15);
-        rect(30, 170, 150, 70, 15);
-        rect(30, 260, 150, 70, 15);
-        rect(220, 80, 150, 70, 15);
-        rect(220, 170, 150, 70, 15);
-        rect(220, 260, 150, 70, 15);
-
-        rect(60, 100, 280, 200, 10);
-        text("Informática Aplicada 1, 2026",200, 140);
-        text("Hecho por: Herrera Camila",200, 180);
-        text("GitHub del proyecto", 200, 220);
-        text("Cerrar", 200, 280);
     }
+
+    mouseClicked() {
+        super.mouseClicked();
+        this.jugar.mouseClicked();
+    }
+
 }
