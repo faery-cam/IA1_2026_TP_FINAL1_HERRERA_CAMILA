@@ -5,7 +5,7 @@ class PantallaInicio extends Escena {
         this.jugar = new Boton(150, 100, 100, 30, () => mundo.elegirEscena(1));
         this.comoJugar = new Boton(130, 140, 140, 30, () => this.ventana.open("comoJugar"));
         this.elegirEscena = new Boton(120, 180, 160, 30, () => this.ventana.open("elegirEscena"));
-        this.configuracion = new Boton(120, 220, 160, 30, () => this.ventana.open());
+        this.configuracion = new Boton(120, 220, 160, 30, () => this.ventana.open("configuracion"));
         this.extras = new Boton(160, 260, 80, 30, () => this.ventana.open("extras"));
     }
 
@@ -39,7 +39,5 @@ class PantallaInicio extends Escena {
         this.elegirEscena.mouseClicked();
         this.configuracion.mouseClicked();
         this.extras.mouseClicked();
-
-
     }
 }

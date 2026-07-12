@@ -28,16 +28,21 @@ class Ventana {
             case "comoJugar":
                 this.comoJugar();
                 break;
+
             case "elegirEscena":
                 this.elegirEscena();
                 break;
 
-            case "salir":
-                this.salir();
+            case "configuracion":
+                this.configuracion();
                 break;
 
             case "extras":
                 this.extras();
+                break;
+
+            case "salir":
+                this.salir();
                 break;
         }
     }
@@ -59,7 +64,7 @@ class Ventana {
 
     mouseClicked() {
         switch (this.estado) {
-             case "elegirEscena":
+            case "elegirEscena":
                 this.btnX.mouseClicked();
                 break;
 
@@ -85,7 +90,6 @@ class Ventana {
     }
 
     elegirEscena() {
-
         this.dibujarMarco(10, 10, 380, 380);
         text("Elegir escena", 200, 50);
         text("X", 360, 50);
@@ -97,12 +101,11 @@ class Ventana {
         rect(220, 260, 150, 70, 15);
     }
 
-    salir() {
-        this.dibujarMarco(60, 150, 280, 100);
-        textSize(20);
-        text("¿Desea abandonar la partida?", 200, 190);
-        text("Sí", 130, 230);
-        text("No", 270, 230);
+    configuracion() {
+        this.dibujarMarco(80, 80, 240, 240);
+        text("Música", 200, 140);
+        text("Fx", 200, 180);
+        text("Menú principal", 200, 220);
     }
 
     extras() {
@@ -112,5 +115,13 @@ class Ventana {
         text("Hecho por:", 200, 180);
         text("GitHub del proyecto", 200, 220);
         text("Cerrar", 200, 280);
+    }
+
+    salir() {
+        this.dibujarMarco(60, 150, 280, 100);
+        textSize(20);
+        text("¿Desea abandonar la partida?", 200, 190);
+        text("Sí", 130, 230);
+        text("No", 270, 230);
     }
 }
