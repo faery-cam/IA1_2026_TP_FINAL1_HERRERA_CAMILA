@@ -7,6 +7,7 @@ class Escena {
 
     draw() {
         this.hud.draw();
+        this.ventana.draw();
     }
 
     //cambia de escena con las flechas izq/der
@@ -18,8 +19,12 @@ class Escena {
         }
     }
 
-    //maneja los clicks del hud
+    //maneja los clicks
     mouseClicked() {
+        if (this.ventana.estado !== null) {
+            this.ventana.mouseClicked();
+            return;
+        }
         this.hud.mouseClicked();
     }
 }
