@@ -13,16 +13,20 @@ class GestorNotas {
     cargarCancion(cancion) {
         this.cancion = cancion;
         this.tiempoCaida();
-        this.tpoInicio = millis();
-        this.estado = "jugando";
         this.indiceNota = 0;
         this.notas = [];
     }
 
     update() {
+        let termino = this.contador.update();
         if (this.estado === "contador") {
-            this.contador.updateContador();
-            this.contador.drawContador();
+            this.contador.update();
+            this.contador.draw();
+            if (termino) {
+                this.estado = "jugando";
+                this.tpoInicio = millis();
+            }
+
             return;
         }
 
@@ -87,24 +91,6 @@ class GestorNotas {
     }
 
 }
-class CuentaAtras {
-    constructor() {
-        this.num = 3;
-        this.tpoContar = millis();
-    }
-
-    update() {
-        if (millis() - this.tpoContar >= 1000) {
-            this.num--;
-            this.tpoContar = millis();
-        }
-    }
-
-    draw() {
-
-    }
-}
-
 
 class Puntos {
     precision() {
