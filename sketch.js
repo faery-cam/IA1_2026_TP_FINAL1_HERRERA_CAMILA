@@ -1,4 +1,5 @@
 const mundo = new Mundo();
+const canciones = new Canciones();
 
 function preload() {
   //ingresar cosas que se cargan previamente

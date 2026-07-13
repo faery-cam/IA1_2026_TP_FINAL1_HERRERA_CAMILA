@@ -4,7 +4,6 @@ class Nota {
         this.tecla = tecla;
         this.velocidad = velocidad;
         this.y = -20;
-
     }
 
     update() {
