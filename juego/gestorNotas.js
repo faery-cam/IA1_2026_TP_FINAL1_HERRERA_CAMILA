@@ -2,23 +2,39 @@ const fps = 60;
 
 class GestorNotas {
     constructor() {
+        this.contador = new CuentaAtras();
+        this.estado = "contador";
         this.cancion = null;
         this.zonaGolpe = 350;
         this.tpoCaida = 0;
-        this.y = -20;
+        this.spawnY = -20;
     }
 
     cargarCancion(cancion) {
         this.cancion = cancion;
-        this.tpoInicio = millis();
         this.tiempoCaida();
+        this.tpoInicio = millis();
+        this.estado = "jugando";
         this.indiceNota = 0;
         this.notas = [];
     }
 
     update() {
+        if (this.estado === "contador") {
+            this.contador.updateContador();
+            this.contador.drawContador();
+            return;
+        }
 
+        if (this.estado === "pausa") {
+            this.pausar_iniciar();
+            return;
+        }
 
+        this.crearNotas();
+        this.actualizarNotas();
+        this.dibujarNotas();
+        // this.eliminarNotas();
     }
 
     crearNotas() {
@@ -32,11 +48,12 @@ class GestorNotas {
                 new Nota(
                     datosNota.carril, datosNota.tecla, this.cancion.velocidad
                 )
-            )
+            );
+            this.indiceNota++;
         }
-        this.indiceNota++;
+
     }
-    
+
     actualizarNotas() {
         for (let nota of this.notas) {
             nota.update();
@@ -44,7 +61,9 @@ class GestorNotas {
     }
 
     dibujarNotas() {
-
+        for (let nota of this.notas) {
+            nota.draw();
+        }
     }
 
     eliminarNotas() {
@@ -56,15 +75,38 @@ class GestorNotas {
     }
 
     tiempoCaida() {
-        let distancia = this.zonaGolpe - this.y;
+        let distancia = this.zonaGolpe - this.spawnY;
         let segundos = (distancia / this.cancion.velocidad) / fps;
-        this.tpoCaida = segundos;
+        this.tpoCaida = segundos * 1000; //pasa de segundos a milisegundos
     }
 
     pausar_iniciar() {
+
+
         //metodo para contar antes de empezar la cancion (3, 2, 1...) y para dejar pausado el contador en caso de pausar juego.
     }
 
+}
+class CuentaAtras {
+    constructor() {
+        this.num = 3;
+        this.tpoContar = millis();
+    }
+
+    update() {
+        if (millis() - this.tpoContar >= 1000) {
+            this.num--;
+            this.tpoContar = millis();
+        }
+    }
+
+    draw() {
+
+    }
+}
+
+
+class Puntos {
     precision() {
         //aca se puede comparar la nota para ver si fue perfect good o miss
     }
