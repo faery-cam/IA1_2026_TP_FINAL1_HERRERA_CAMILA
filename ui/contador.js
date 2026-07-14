@@ -15,7 +15,7 @@ class CuentaAtras {
     }
 
     draw() {
-
+        text(this.num, width / 2, height / 2);
     }
 
     reiniciar() {

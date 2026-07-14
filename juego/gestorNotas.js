@@ -6,37 +6,57 @@ class GestorNotas {
         this.estado = "contador";
         this.cancion = null;
         this.zonaGolpe = 350;
-        this.tpoCaida = 0;
         this.spawnY = -20;
+
+        this.tpoCaida = 0;
+        this.tpoInicio = 0;
+        this.tpoPausa = 0;
     }
 
     cargarCancion(cancion) {
         this.cancion = cancion;
         this.tiempoCaida();
+
         this.indiceNota = 0;
         this.notas = [];
+
+        this.contador.reiniciar();
+        this.estado = "contador";
+        this.tpoPausa = 0;
     }
 
     update() {
-        let termino = this.contador.update();
         if (this.estado === "contador") {
-            this.contador.update();
-            this.contador.draw();
-            if (termino) {
-                this.estado = "jugando";
-                this.tpoInicio = millis();
-            }
+            let termino = this.contador.update();
 
+            if (termino) {
+
+                if (this.tpoPausa != 0) {
+                    this.tpoInicio += millis() - this.tpoPausa;
+                    this.tpoPausa = 0;
+                } else {
+                    this.tpoInicio = millis();
+                }
+
+                this.contador.reiniciar();
+                this.estado = "jugando";
+            }
             return;
         }
 
         if (this.estado === "pausa") {
-            this.pausar_iniciar();
             return;
         }
 
         this.crearNotas();
         this.actualizarNotas();
+    }
+
+    draw() {
+        if (this.estado === "contador") {
+            this.contador.draw();
+        }
+        
         this.dibujarNotas();
         // this.eliminarNotas();
     }
@@ -55,7 +75,6 @@ class GestorNotas {
             );
             this.indiceNota++;
         }
-
     }
 
     actualizarNotas() {
@@ -84,12 +103,10 @@ class GestorNotas {
         this.tpoCaida = segundos * 1000; //pasa de segundos a milisegundos
     }
 
-    pausar_iniciar() {
-
-
-        //metodo para contar antes de empezar la cancion (3, 2, 1...) y para dejar pausado el contador en caso de pausar juego.
+    pausar() {
+        this.estado = "pausa";
+        this.tpoPausa = millis();
     }
-
 }
 
 class Puntos {
