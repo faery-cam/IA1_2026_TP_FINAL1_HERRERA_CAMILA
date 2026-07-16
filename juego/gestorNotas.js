@@ -56,9 +56,9 @@ class GestorNotas {
         if (this.estado === "contador") {
             this.contador.draw();
         }
-        
+
         this.dibujarNotas();
-        // this.eliminarNotas();
+        this.eliminarNotas();
     }
 
     crearNotas() {
@@ -90,7 +90,11 @@ class GestorNotas {
     }
 
     eliminarNotas() {
-
+        for (let i = this.notas.length - 1; i >= 0; i--) {
+            if (!this.notas[i].activa) {
+                this.notas.splice(i, 1);
+            }
+        }
     }
 
     tiempoActual() {
@@ -107,18 +111,8 @@ class GestorNotas {
         this.estado = "pausa";
         this.tpoPausa = millis();
     }
-}
 
-class Puntos {
-    precision() {
-        //aca se puede comparar la nota para ver si fue perfect good o miss
-    }
+    tocarCarril() {
 
-    combo() {
-        //por cada miss se pierde el combo, siempre qe sea good o perfect el combo sigue sumando 1.
-    }
-
-    puntuacion() {
-        //se calcula en base a la cantidad de perfect, good y miss, multiplicando la cantidad de cada uno por su valor y sumando todo al final
     }
 }
