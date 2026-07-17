@@ -6,11 +6,26 @@ class Ventana {
         this.y = 0;
         this.w = 0;
         this.h = 0;
+        this.alConfirmar = () => { };
+        this.alCerrar = () => { };
+
         //=======BOTONES=========
-        this.btnSi = new Boton(130, 230, 10, 10, () => mundo.elegirEscena(0));
-        this.btnNo = new Boton(270, 230, 10, 10, () => this.close());
-        this.btnCerrar = new Boton(170, 260, 60, 20, () => this.close());
-        this.btnX = new Boton(350, 30, 30, 30, () => this.close());
+        this.btnSi = new Boton(120, 210, 20, 20, () => {
+            this.close();
+            this.alConfirmar();
+        });
+        this.btnNo = new Boton(260, 210, 20, 20, () => {
+            this.close();
+            this.alCerrar();
+        });
+        this.btnCerrar = new Boton(170, 260, 60, 20, () => {
+            this.close();
+            this.alCerrar();
+        });
+        this.btnX = new Boton(350, 30, 30, 30, () => {
+            this.close();
+            this.alCerrar();
+        });
     }
 
     open(estado) {
@@ -29,8 +44,8 @@ class Ventana {
                 this.comoJugar();
                 break;
 
-            case "elegirEscena":
-                this.elegirEscena();
+            case "elegirNivel":
+                this.elegirNivel();
                 break;
 
             case "configuracion":
@@ -64,7 +79,7 @@ class Ventana {
 
     mouseClicked() {
         switch (this.estado) {
-            case "elegirEscena":
+            case "elegirNivel":
                 this.btnX.mouseClicked();
                 break;
 
@@ -84,12 +99,9 @@ class Ventana {
     }
 
     //==============VENTANAS=================
-    comoJugar() {
+    comoJugar() { }
 
-
-    }
-
-    elegirEscena() {
+    elegirNivel() {
         this.dibujarMarco(10, 10, 380, 380);
         text("Elegir escena", 200, 50);
         text("X", 360, 50);

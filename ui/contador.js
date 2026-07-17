@@ -17,14 +17,8 @@ class CuentaAtras {
     }
 
     draw() {
-        textSize(40);
         fill(255);
-
         text(this.num, width / 2, height / 2);
-
-        textSize(20);
-        text(millis() - this.tpoContar, width / 2, height / 2 + 40);
-
     }
 
     reiniciar() {

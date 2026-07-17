@@ -1,11 +1,9 @@
 class HUD {
-    constructor(escena) {
-        this.escena = escena;
-
-        this.inicio = new Boton(140, 370, 20, 20, () => mundo.elegirEscena(0))
-        this.prev = new Boton(170, 370, 20, 20, () => mundo.escenaPrevia())
-        this.sig = new Boton(210, 370, 20, 20, () => mundo.escenaSiguiente())
-        this.config = new Boton(240, 370, 20, 20, () => this.escena.ventana.open("configuracion"));
+    constructor() {
+        this.inicio = new Boton(140, 370, 20, 20, () => this.onInicio());
+        this.prev = new Boton(170, 370, 20, 20, () => this.onPrev());
+        this.sig = new Boton(210, 370, 20, 20, () => this.onSig());
+        this.config = new Boton(240, 370, 20, 20, () => this.onConfig());
     }
 
     draw() {//botones 20x20
@@ -28,4 +26,10 @@ class HUD {
         this.sig.mouseClicked();
         this.config.mouseClicked();
     }
+
+    //metodos vacios asi cada escena puede decidir q hace con cada boton, el hud solo avisa q un boton fue tocado
+    onInicio() { }
+    onPrev() { }
+    onSig() { }
+    onConfig() { }
 }

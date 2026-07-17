@@ -1,7 +1,7 @@
 //escena general donde definimos las propiedades base
 class Escena {
     constructor() {
-        this.hud = new HUD(this); //creamos el objeto que tiene el hud
+        this.hud = new HUD(); //creamos el objeto que tiene el hud
         this.ventana = new Ventana();
     }
 

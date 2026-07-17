@@ -119,6 +119,11 @@ class GestorNotas {
         this.tpoPausa = millis();
     }
 
+    reanudar() {
+        this.estado = "contador";
+        this.contador.reiniciar();
+    }
+
     tocarCarril(carrilPres) {
         for (let nota of this.notas) {
             if (nota.carril == carrilPres) {
