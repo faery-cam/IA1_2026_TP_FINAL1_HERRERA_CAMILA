@@ -20,6 +20,10 @@ class Mundo {
 
         this.escenaActual = this.escenas[i];
         this.indiceActual = i;
+        //si la escena tiene el metodo entrar lo ejecuta.
+        if (this.escenaActual.entrar) {
+            this.escenaActual.entrar();
+        }
     }
 
     //pasa a siguiente escena sumando al valor guardado en el índice y enviandole ese valor a la función elegirEscena, si se acabaron las escenas se vuelve al inicio (0) usando modulo
