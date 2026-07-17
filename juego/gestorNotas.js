@@ -3,6 +3,7 @@ const fps = 60;
 class GestorNotas {
     constructor() {
         this.contador = new CuentaAtras();
+        this.puntos = new Puntos();
         this.estado = "contador";
         this.cancion = null;
         this.zonaGolpe = 350;
@@ -50,6 +51,7 @@ class GestorNotas {
 
         this.crearNotas();
         this.actualizarNotas();
+        this.eliminarNotas();
     }
 
     draw() {
@@ -58,7 +60,6 @@ class GestorNotas {
         }
 
         this.dibujarNotas();
-        this.eliminarNotas();
     }
 
     crearNotas() {
@@ -91,6 +92,12 @@ class GestorNotas {
 
     eliminarNotas() {
         for (let i = this.notas.length - 1; i >= 0; i--) {
+            if (this.notas[i].y > this.zonaGolpe + 20) {
+                this.puntos.notaPerdida();
+                this.notas.splice(i, 1);
+                continue;
+            }
+
             if (!this.notas[i].activa) {
                 this.notas.splice(i, 1);
             }
@@ -112,7 +119,16 @@ class GestorNotas {
         this.tpoPausa = millis();
     }
 
-    tocarCarril() {
+    tocarCarril(carrilPres) {
+        for (let nota of this.notas) {
+            if (nota.carril == carrilPres) {
+                let acerto = this.puntos.precision(nota.y);
 
+                if (acerto) {
+                    nota.activa = false;
+                }
+                break;
+            }
+        }
     }
 }

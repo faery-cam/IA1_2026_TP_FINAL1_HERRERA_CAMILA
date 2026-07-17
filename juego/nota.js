@@ -2,11 +2,13 @@ const carriles = [100, 170, 240, 310];
 
 class Nota {
     constructor(carril, tecla, velocidad) {
+        this.carril = carril;
         this.tecla = tecla;
         this.velocidad = velocidad;
 
         this.x = carriles[carril];
         this.y = -20;
+        this.activa = true;
     }
 
     update() {
@@ -14,6 +16,6 @@ class Nota {
     }
 
     draw() {
-        circle(this.x, this.y, 50);
+        circle(this.x, this.y, 20);
     }
 }

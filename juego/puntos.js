@@ -1,6 +1,6 @@
 class Puntos {
-    constructor(zonaGolpe) {
-        this.zonaGolpe = zonaGolpe;
+    constructor() {
+        this.zonaGolpe = 350;
         this.combo = 0;
         this.maxCombo = 0;
         this.puntaje = 0;
@@ -18,23 +18,32 @@ class Puntos {
             this.perfect++;
             this.puntaje += 100;
             this.sumarCombo(true);
+            return true;
         }
         else if (diferencia <= 10) {
             this.good++;
             this.puntaje += 30;
             this.sumarCombo(true);
+            return true;
         }
         else if (diferencia <= 15) {
             this.miss++;
             this.sumarCombo(false);
+            return true;
         }
+        return false;
+    }
+
+    notaPerdida() {
+        this.miss++;
+        this.sumarCombo(false);
     }
 
     sumarCombo(acierto) {
         //por cada miss se pierde el combo, siempre que sea good o perfect el combo sigue sumando 1.
         if (acierto) {
             this.combo++;
-            if (this.combo > this.maxCombo, bo) {
+            if (this.combo > this.maxCombo) {
                 this.maxCombo = this.combo;
             }
         } else {
