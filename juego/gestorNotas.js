@@ -1,4 +1,4 @@
-const fps = 60;
+const fps = CONFIG.juego.fps;
 
 class GestorNotas {
     constructor() {
@@ -6,8 +6,8 @@ class GestorNotas {
         this.puntos = new Puntos();
         this.estado = "contador";
         this.cancion = null;
-        this.zonaGolpe = 350;
-        this.spawnY = -20;
+        this.zonaGolpe = CONFIG.juego.zonaGolpe;
+        this.spawnY = -CONFIG.juego.spawnY;
 
         this.tpoCaida = 0;
         this.tpoInicio = 0;
