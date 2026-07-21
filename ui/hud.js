@@ -3,10 +3,10 @@ class HUD {
         this.y = CONFIG.hud.y;
         this.size = CONFIG.hud.size;
 
-        this.inicio = new Boton(140, this.y, this.size, this.size, () => this.onInicio());
-        this.prev = new Boton(170, this.y, this.size, this.size, () => this.onPrev());
-        this.sig = new Boton(210, this.y, this.size, this.size, () => this.onSig());
-        this.config = new Boton(240, this.y, this.size, this.size, () => this.onConfig());
+        this.inicio = new Boton(140, this.y, this.size, this.size, () => this.onInicio(), { click: menuSelect2 });
+        this.prev = new Boton(170, this.y, this.size, this.size, () => this.onPrev(), { click: menuSelect });
+        this.sig = new Boton(210, this.y, this.size, this.size, () => this.onSig(), { click: menuSelect });
+        this.config = new Boton(240, this.y, this.size, this.size, () => this.onConfig(), { click: pause });
     }
 
     draw() {//botones 20x20
@@ -21,6 +21,13 @@ class HUD {
 
         fill(this.config.isHover() ? "pink" : 255);
         circle(250, 380, 20);//config
+    }
+
+    update() {
+        this.inicio.update();
+        this.prev.update();
+        this.sig.update();
+        this.config.update();
     }
 
     mouseClicked() {

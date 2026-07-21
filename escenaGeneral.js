@@ -8,6 +8,15 @@ class Escena {
     draw() {
         this.hud.draw();
         this.ventana.draw();
+        this.update();
+    }
+
+    update() {
+        if (this.ventana.estado !== null) {
+            this.ventana.update();
+            return;
+        }
+        this.hud.update();
     }
 
     //cambia de escena con las flechas izq/der

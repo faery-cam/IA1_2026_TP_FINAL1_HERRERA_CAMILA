@@ -13,19 +13,26 @@ class Ventana {
         this.btnSi = new Boton(120, 210, 20, 20, () => {
             this.close();
             this.alConfirmar();
-        });
+        },
+            { click: menuSelect2 });
+
         this.btnNo = new Boton(260, 210, 20, 20, () => {
             this.close();
             this.alCerrar();
-        });
+        },
+            { click: menuCancel });
+
         this.btnCerrar = new Boton(170, 260, 60, 20, () => {
             this.close();
             this.alCerrar();
-        });
+        },
+            { click: menuCancel });
+
         this.btnX = new Boton(350, 30, 30, 30, () => {
             this.close();
             this.alCerrar();
-        });
+        },
+            { click: menuCancel });
     }
 
     open(estado) {
@@ -34,6 +41,7 @@ class Ventana {
 
     close() {
         this.estado = null;
+        menuCancel.play();
     }
 
     draw() {
@@ -95,6 +103,23 @@ class Ventana {
 
         if (this.clickFuera()) {
             this.close();
+        }
+    }
+
+    update() {
+        switch (this.estado) {
+            case "elegirNivel":
+                this.btnX.update();
+                break;
+
+            case "salir":
+                this.btnSi.update();
+                this.btnNo.update();
+                break;
+
+            case "extras":
+                this.btnCerrar.update();
+                break;
         }
     }
 

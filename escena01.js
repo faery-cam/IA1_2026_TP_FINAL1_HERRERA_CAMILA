@@ -2,11 +2,11 @@ class PantallaInicio extends Escena {
     constructor() {
         super();
 
-        this.jugar = new Boton(150, 100, 100, 30, () => mundo.elegirEscena(1));
-        this.comoJugar = new Boton(130, 140, 140, 30, () => this.ventana.open("comoJugar"));
-        this.elegirNivel = new Boton(120, 180, 160, 30, () => this.ventana.open("elegirNivel"));
-        this.configuracion = new Boton(120, 220, 160, 30, () => this.ventana.open("configuracion"));
-        this.extras = new Boton(160, 260, 80, 30, () => this.ventana.open("extras"));
+        this.jugar = new Boton(150, 100, 100, 30, () => mundo.elegirEscena(1), { click: menuSelect });
+        this.comoJugar = new Boton(130, 140, 140, 30, () => this.ventana.open("comoJugar"), { click: menuSelect });
+        this.elegirNivel = new Boton(120, 180, 160, 30, () => this.ventana.open("elegirNivel"), { click: menuSelect });
+        this.configuracion = new Boton(120, 220, 160, 30, () => this.ventana.open("configuracion"), { click: menuSelect });
+        this.extras = new Boton(160, 260, 80, 30, () => this.ventana.open("extras"), { click: menuSelect });
 
         //botones HUD
         this.hud.onInicio = () => mundo.elegirEscena(0);
@@ -30,6 +30,20 @@ class PantallaInicio extends Escena {
         text("Extras", 200, 280);
 
         super.draw();
+    }
+
+    update() {
+        if (this.ventana.estado !== null) {
+            super.update();
+            return;
+        }
+        super.update();
+
+        this.jugar.update();
+        this.comoJugar.update();
+        this.elegirNivel.update();
+        this.configuracion.update();
+        this.extras.update();
     }
 
     mouseClicked() {

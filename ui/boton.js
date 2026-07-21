@@ -1,11 +1,21 @@
 class Boton {
-    //clase donde se crea y se maneja cada boton
-    constructor(x, y, w, h, accion) {
+    //clase donde se crea y se maneja cada boton.
+    constructor(x, y, w, h, accion, sonidos) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.accion = accion;
+        this.sonidos = sonidos;
+        this.hizoHover = false;
+    }
+
+    update() {
+        let hover = this.isHover();
+        if (hover && !this.hizoHover) {
+            menuMove.play();
+        }
+        this.hizoHover = hover;
     }
 
     //devuelve un bool
@@ -24,6 +34,9 @@ class Boton {
     mouseClicked() {
         if (this.hitbox()) {
             this.accion();
+            if (this.sonidos.click) {
+                this.sonidos.click.play();
+            }
         }
     }
 }

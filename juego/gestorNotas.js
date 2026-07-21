@@ -117,6 +117,7 @@ class GestorNotas {
     pausar() {
         this.estado = "pausa";
         this.tpoPausa = millis();
+        pause.play();
     }
 
     reanudar() {
