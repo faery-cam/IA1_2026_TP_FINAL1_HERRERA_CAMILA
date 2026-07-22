@@ -4,6 +4,9 @@ class GestorNotas {
     constructor() {
         this.contador = new CuentaAtras();
         this.puntos = new Puntos();
+        this.particulas = new GestorParticulas();
+        this.interfaz = new InterfazJuego();
+
         this.estado = "contador";
         this.cancion = null;
         this.zonaGolpe = CONFIG.juego.zonaGolpe;
@@ -16,8 +19,10 @@ class GestorNotas {
 
     cargarCancion(cancion) {
         this.cancion = cancion;
+        
+        this.interfaz.subirCancion(this.cancion.nombre, this.cancion.nivel)
+        
         this.tiempoCaida();
-
         this.indiceNota = 0;
         this.notas = [];
 
@@ -52,6 +57,8 @@ class GestorNotas {
         this.crearNotas();
         this.actualizarNotas();
         this.eliminarNotas();
+        this.particulas.update();
+        this.interfaz.update(this.puntos.combo, this.puntos.puntaje);
     }
 
     draw() {
@@ -60,6 +67,8 @@ class GestorNotas {
         }
 
         this.dibujarNotas();
+        this.particulas.draw();
+        this.interfaz.draw();
     }
 
     crearNotas() {
@@ -131,6 +140,7 @@ class GestorNotas {
                 let acerto = this.puntos.precision(nota.y);
 
                 if (acerto) {
+                    this.particulas.crear(nota.x, nota.y);
                     nota.activa = false;
                 }
                 break;

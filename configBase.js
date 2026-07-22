@@ -16,4 +16,9 @@ const CONFIG = {
         spawnY: -20,
         carriles: [100, 170, 240, 310],
     },
+
+    colores: {
+        rosa: [255, 40, 130],
+        menta: [40, 255, 160],
+    }
 }

@@ -26,6 +26,8 @@ function setup() {
   menuMove.playMode('restart');
   menuSelect.playMode('restart');
 
+  textFont('Zen Dots');
+
   //hacemos un push dentro de mundo con cada escena llamando a 'addEscena'
   mundo.addEscena(new PantallaInicio());
   mundo.addEscena(new Nivel_01());
