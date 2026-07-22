@@ -59,4 +59,8 @@ class PantallaInicio extends Escena {
         this.configuracion.mouseClicked();
         this.extras.mouseClicked();
     }
+
+    keyPressed(key, keyCode) {
+        super.keyPressed(key, keyCode);
+    }
 }

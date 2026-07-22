@@ -33,17 +33,14 @@ class Nivel_01 extends Escena {
     }
 
     draw() {
-        text('nivel 1', 30, 100);
-
         this.gestor.update();
         this.gestor.draw();
         super.draw();
     }
 
     keyPressed() {
-        super.keyPressed();
-        this.teclas.keyPressed();
-
+        super.keyPressed(key, keyCode);
+        this.teclas.keyPressed(key);
     }
 
     mouseClicked() {

@@ -12,7 +12,7 @@ const CONFIG = {
 
     juego: {
         fps: 60,
-        zonaGolpe: 350,
+        zonaGolpe: 300,
         spawnY: -20,
         carriles: [100, 170, 240, 310],
     },

@@ -7,8 +7,8 @@ class InterfazJuego {
         this.numNivel = null;
         this.combo = 0;
         this.puntaje = 0;
-
     }
+
     subirCancion(cancion, nivel) {
         this.nombreCancion = cancion;
         this.numNivel = nivel;

@@ -43,10 +43,7 @@ function mouseClicked() {
   mundo.escenaActual.mouseClicked();
 }
 
-//revisa la tecla presionada y dentro de escena se maneja que se hace con el dato guardado en caso de haber pasado el IF
+//revisa la tecla presionada y dentro de cada escena se maneja que se hace
 function keyPressed() {
-  if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-    let tecla = keyCode;
-    mundo.escenaActual.keyPressed(tecla);
-  }
+  mundo.escenaActual.keyPressed(key, keyCode);
 }

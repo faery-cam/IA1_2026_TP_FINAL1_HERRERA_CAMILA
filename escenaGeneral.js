@@ -20,10 +20,10 @@ class Escena {
     }
 
     //cambia de escena con las flechas izq/der
-    keyPressed(tecla) {
-        if (tecla === LEFT_ARROW) {
+    keyPressed(key, keyCode) {
+        if (keyCode === LEFT_ARROW) {
             mundo.escenaPrevia();
-        } else if (tecla === RIGHT_ARROW) {
+        } else if (keyCode === RIGHT_ARROW) {
             mundo.escenaSiguiente();
         }
     }
