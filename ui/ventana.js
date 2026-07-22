@@ -18,19 +18,16 @@ class Ventana {
 
         this.btnNo = new Boton(260, 210, 20, 20, () => {
             this.close();
-            this.alCerrar();
         },
             { click: menuCancel });
 
         this.btnCerrar = new Boton(170, 260, 60, 20, () => {
             this.close();
-            this.alCerrar();
         },
             { click: menuCancel });
 
         this.btnX = new Boton(350, 30, 30, 30, () => {
             this.close();
-            this.alCerrar();
         },
             { click: menuCancel });
     }
@@ -42,6 +39,7 @@ class Ventana {
     close() {
         this.estado = null;
         menuCancel.play();
+        this.alCerrar();
     }
 
     draw() {

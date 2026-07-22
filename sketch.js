@@ -39,6 +39,7 @@ function draw() {
   mundo.escenaActual.draw();
 }
 
+//maneja los clicks
 function mouseClicked() {
   mundo.escenaActual.mouseClicked();
 }

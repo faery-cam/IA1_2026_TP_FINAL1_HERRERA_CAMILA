@@ -28,7 +28,8 @@ class Nivel_01 extends Escena {
         }
     }
 
-    entrar() {//lo que se ejecuta primero al entrar al nivel/escena
+    entrar() {
+        //lo que se ejecuta primero al entrar al nivel/escena. De esta manera queda coordinado el tiempo.
         this.gestor.cargarCancion(canciones.nivel_1());
     }
 
@@ -39,7 +40,15 @@ class Nivel_01 extends Escena {
     }
 
     keyPressed() {
-        super.keyPressed(key, keyCode);
+        if (keyCode === LEFT_ARROW) {
+            this.gestor.pausar();
+            this.ventana.alConfirmar = () => { mundo.escenaPrevia(); };
+            this.ventana.open("salir");
+        } else if (keyCode === RIGHT_ARROW) {
+            this.gestor.pausar();
+            this.ventana.alConfirmar = () => { mundo.escenaSiguiente(); };
+            this.ventana.open("salir");
+        }
         this.teclas.keyPressed(key);
     }
 
