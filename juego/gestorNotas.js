@@ -10,7 +10,7 @@ class GestorNotas {
         this.estado = "contador";
         this.cancion = null;
         this.zonaGolpe = CONFIG.juego.zonaGolpe;
-        this.spawnY = -CONFIG.juego.spawnY;
+        this.spawnY = CONFIG.juego.spawnY;
 
         this.tpoCaida = 0;
         this.tpoInicio = 0;
@@ -19,9 +19,8 @@ class GestorNotas {
 
     cargarCancion(cancion) {
         this.cancion = cancion;
-        
         this.interfaz.subirCancion(this.cancion.nombre, this.cancion.nivel)
-        
+
         this.tiempoCaida();
         this.indiceNota = 0;
         this.notas = [];
@@ -36,12 +35,12 @@ class GestorNotas {
             let termino = this.contador.update();
 
             if (termino) {
-
-                if (this.tpoPausa != 0) {
+                if (this.tpoInicio === 0) {
+                    this.tpoInicio = millis();
+                }
+                else {
                     this.tpoInicio += millis() - this.tpoPausa;
                     this.tpoPausa = 0;
-                } else {
-                    this.tpoInicio = millis();
                 }
 
                 this.contador.reiniciar();
@@ -69,6 +68,7 @@ class GestorNotas {
         this.dibujarNotas();
         this.particulas.draw();
         this.interfaz.draw();
+        this.puntos.draw();
     }
 
     crearNotas() {
@@ -101,8 +101,9 @@ class GestorNotas {
 
     eliminarNotas() {
         for (let i = this.notas.length - 1; i >= 0; i--) {
-            if (this.notas[i].y > this.zonaGolpe + 20) {
+            if (this.notas[i].y > this.zonaGolpe + 35) {
                 this.puntos.notaPerdida();
+                pressError.play();
                 this.notas.splice(i, 1);
                 continue;
             }

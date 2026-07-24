@@ -44,7 +44,8 @@ class Nivel_01 extends Escena {
             this.gestor.pausar();
             this.ventana.alConfirmar = () => { mundo.escenaPrevia(); };
             this.ventana.open("salir");
-        } else if (keyCode === RIGHT_ARROW) {
+        }
+        else if (keyCode === RIGHT_ARROW) {
             this.gestor.pausar();
             this.ventana.alConfirmar = () => { mundo.escenaSiguiente(); };
             this.ventana.open("salir");
