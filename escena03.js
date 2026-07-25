@@ -1,4 +1,4 @@
-class PantallaFinal extends Escena {
+class PantallaFinal extends EscenaGeneral {
     constructor() {
         super();
 

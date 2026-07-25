@@ -1,4 +1,4 @@
-class Nivel_01 extends Escena {
+class Nivel_01 extends EscenaGeneral {
     constructor() {
         super();
 
@@ -29,14 +29,26 @@ class Nivel_01 extends Escena {
     }
 
     entrar() {
-        //lo que se ejecuta primero al entrar al nivel/escena. De esta manera queda coordinado el tiempo.
+        //lo que se ejecuta primero al entrar al nivel/escena. De esta manera queda coordinado el tiempo y detiene la musica q este sonando en menu u otra zona.
+        this.musica.detener();
+        this.fondos.recorrerFondos();
         this.gestor.cargarCancion(canciones.nivel_1());
     }
 
     draw() {
-        this.gestor.update();
+        this.fondos.draw();
         this.gestor.draw();
         super.draw();
+    }
+
+    update() {
+
+        if (this.ventana.estado !== null) {
+            super.update();
+            return;
+        }
+        this.gestor.update();
+
     }
 
     keyPressed() {

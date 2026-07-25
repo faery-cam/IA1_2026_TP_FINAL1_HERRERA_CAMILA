@@ -1,4 +1,4 @@
-class PantallaInicio extends Escena {
+class PantallaInicio extends EscenaGeneral {
     constructor() {
         super();
 
@@ -15,8 +15,15 @@ class PantallaInicio extends Escena {
         this.hud.onConfig = () => this.ventana.open("configuracion");
     }
 
+    entrar() {
+        this.musica.reproducir();
+    }
+
     draw() {
+
+        this.fondos.halftone();
         textSize(35);
+        fill(255)
         textAlign(CENTER);
         text("TITULO", 200, 50);
 
@@ -33,6 +40,7 @@ class PantallaInicio extends Escena {
     }
 
     update() {
+        this.musica.update();
         if (this.ventana.estado !== null) {
             super.update();
             return;
