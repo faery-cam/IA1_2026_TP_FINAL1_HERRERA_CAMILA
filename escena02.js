@@ -24,7 +24,7 @@ class Nivel_01 extends EscenaGeneral {
         }
         this.hud.onConfig = () => {
             this.gestor.pausar();
-            this.ventana.open("configuracion");
+            this.ventana.open("opciones");
         }
     }
 
@@ -43,13 +43,11 @@ class Nivel_01 extends EscenaGeneral {
     }
 
     update() {
-
         if (this.ventana.estado !== null) {
             super.update();
             return;
         }
         this.gestor.update();
-
     }
 
     keyPressed() {

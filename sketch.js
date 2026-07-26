@@ -1,10 +1,17 @@
 const mundo = new Mundo();
 const canciones = new Canciones();
+
+
 let levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer;
+
+let efectosSonido = [];
+let menuMusica = [];
+let cancionesJuego = [];
+
+let fondos = [];
+
 let zonaGolpeJuego;
 let carrilesJuego = [];
-let menuMusica = [];
-let fondos = [];
 
 function preload() {
   //ingresar cosas que se cargan previamente
@@ -60,6 +67,9 @@ function cargarAudios() {
   result = loadSound('assets/audio/result.wav');
   timer = loadSound('assets/audio/timer.wav');
 
+  efectosSonido = [levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer];
+
+
   menuMusica.push(loadSound('assets/audio/menuMusica/Lingering among flowers.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Project Diva X Home.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Judgment knights of thunder.mp3'));
@@ -70,6 +80,10 @@ function cargarAudios() {
   menuMusica.push(loadSound('assets/audio/menuMusica/Diabolic Waltz.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Even Angels feel joy.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Sakura Kiss For String.mp3'));
+
+  cancionesJuego.push(loadSound('assets/audio/canciones/Girl Like Me.mp3'));
+  cancionesJuego.push(loadSound('assets/audio/canciones/Biii-P - XLOV.mp3'));
+  cancionesJuego.push(loadSound('assets/audio/canciones/Dec. - Kanaria.mp3'));
 }
 
 function cargarImagenes() {

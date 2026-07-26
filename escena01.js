@@ -5,7 +5,7 @@ class PantallaInicio extends EscenaGeneral {
         this.jugar = new Boton(width * 0.1, height * 0.25, width * 0.4, height * 0.09, () => mundo.elegirEscena(1), { click: menuSelect });
         this.comoJugar = new Boton(width * 0.1, height * 0.36, width * 0.4, height * 0.09, () => this.ventana.open("comoJugar"), { click: menuSelect });
         this.elegirNivel = new Boton(width * 0.1, height * 0.47, width * 0.4, height * 0.09, () => this.ventana.open("elegirNivel"), { click: menuSelect });
-        this.configuracion = new Boton(width * 0.1, height * 0.59, width * 0.4, height * 0.09, () => this.ventana.open("configuracion"), { click: menuSelect });
+        this.configuracion = new Boton(width * 0.1, height * 0.59, width * 0.4, height * 0.09, () => this.ventana.open("configUI"), { click: menuSelect });
         this.extras = new Boton(width * 0.1, height * 0.70, width * 0.4, height * 0.09, () => this.ventana.open("extras"), { click: menuSelect });
 
         //botones HUD
@@ -30,18 +30,22 @@ class PantallaInicio extends EscenaGeneral {
         text("TITULO", width / 2, height / 8);
 
         strokeWeight(1);
-        fill(255,200)
+        fill(255, 200)
         rect(width * 0.13, height * 0.2, width * 0.34, height * 0.64, 10);
 
         noStroke();
-        fill(20, 45, 30);
+        fill(this.jugar.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.25, width * 0.4, height * 0.09, 5);
+        fill(this.comoJugar.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.36, width * 0.4, height * 0.09, 5);
+        fill(this.elegirNivel.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.47, width * 0.4, height * 0.09, 5);
+        fill(this.configuracion.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.59, width * 0.4, height * 0.09, 5);
+        fill(this.extras.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.70, width * 0.4, height * 0.09, 5);
-        
-        
+
+
         textSize(width / 30);//(24)
         textAlign(LEFT);
         stroke(this.rosa);
