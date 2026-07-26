@@ -13,23 +13,23 @@ class Ventana {
         this.alCerrar = () => { };
 
         //=======BOTONES=========
-        this.btnSi = new Boton(120, 210, 20, 20, () => {
+        this.btnSi = new Boton(width * 0.35, height * 0.565, width * 0.1, height * 0.06, () => {
             this.close();
             this.alConfirmar();
         },
             { click: menuSelect2 });
 
-        this.btnNo = new Boton(260, 210, 20, 20, () => {
+        this.btnNo = new Boton(width * 0.547, height * 0.565, width * 0.1, height * 0.06, () => {
             this.close();
         },
             { click: menuCancel });
 
-        this.btnCerrar = new Boton(170, 260, 60, 20, () => {
+        this.btnCerrar = new Boton(width * 0.25, height * 0.81, width * 0.1, height * 0.06, () => {
             this.close();
         },
             { click: menuCancel });
 
-        this.btnX = new Boton(350, 30, 30, 30, () => {
+        this.btnX = new Boton(width * 0.45, height * 0.22, width * 0.04, height * 0.06, () => {
             this.close();
         },
             { click: menuCancel });
@@ -128,19 +128,31 @@ class Ventana {
     comoJugar() { }
 
     elegirNivel() {
+        fill(40, 60, 50)
         this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
+
+        fill(this.menta);
+        noStroke();
+        rect(width * 0.12, height * 0.34, width * 0.16, height * 0.2, 10);
+        rect(width * 0.32, height * 0.34, width * 0.16, height * 0.2, 10);
+        rect(width * 0.12, height * 0.59, width * 0.16, height * 0.2, 10);
+
+        fill(255)
+        stroke(this.rosa);
         rect(width * 0.125, height * 0.35, width * 0.15, height * 0.125, 10);
         rect(width * 0.325, height * 0.35, width * 0.15, height * 0.125, 10);
-        rect(width * 0.125, height * 0.55, width * 0.15, height * 0.125, 10);
+        rect(width * 0.125, height * 0.6, width * 0.15, height * 0.125, 10);
 
         textAlign(CENTER);
         text("Elegir Nivel", width * 0.3, height * 0.3);
         textSize(width / 40);
-        text("X", width * 0.47, height * 0.27); //360, 50
         text("Nivel 1", width * 0.2, height * 0.525);
         text("Nivel 2", width * 0.4, height * 0.525);
-        text("Nivel 3", width * 0.2, height * 0.725);
+        text("Nivel 3", width * 0.2, height * 0.775);
 
+        noStroke();
+        fill(this.btnX.isHover() ? this.menta : this.rosa);
+        text("X", width * 0.47, height * 0.27);
     }
 
     configuracion() {
@@ -151,22 +163,30 @@ class Ventana {
     }
 
     extras() {
-        stroke(...this.menta);
+        stroke(this.menta);
         strokeWeight(1);
-        //fill(40, 60, 50); //20, 90, 60
+        fill(20, 45, 30);
         this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
         textSize(15);
         textAlign(CENTER);
+        fill(3255);
         text("Informática Aplicada 1, 2026", width * 0.3, height * 0.3);
         text("Hecho por: Herrera Camila", width * 0.3, height * 0.5);
         text("GitHub del proyecto", width * 0.3, height * 0.6);
+
+        fill(this.btnCerrar.isHover() ? this.menta : 255);
         text("Cerrar", width * 0.3, height * 0.85);
     }
 
     salir() {
         stroke(this.menta);
         fill(40, 60, 50);
-        this.dibujarMarco(width * 0.25, height * 0.325, width * 0.5, height * 0.35);
+        this.dibujarMarco(width * 0.23, height * 0.325, width * 0.54, height * 0.35);
+
+        fill(this.btnSi.isHover() ? this.rosa : this.menta);
+        rect(width * 0.35, height * 0.565, width * 0.1, height * 0.06, 5);
+        fill(this.btnNo.isHover() ? this.rosa : this.menta);
+        rect(width * 0.547, height * 0.565, width * 0.1, height * 0.06, 5);
 
         stroke(0)
         fill(this.rosa);

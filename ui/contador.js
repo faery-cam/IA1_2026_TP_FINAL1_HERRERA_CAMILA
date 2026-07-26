@@ -17,7 +17,7 @@ class CuentaAtras {
     }
 
     draw() {
-        fill(0);
+        fill(255);
         stroke(...CONFIG.colores.rosa)
         textSize(width / 15);
         text(this.num, width * 0.5, height * 0.5);

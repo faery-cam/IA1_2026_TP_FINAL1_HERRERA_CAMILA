@@ -20,6 +20,14 @@ class InterfazJuego {
     }
 
     draw() {
+        fill(10, 30, 20, 180);
+        stroke(this.menta);
+        rect(width * 0.25, 0, width * 0.5, height); //zona de carriles
+        stroke(255);
+        strokeWeight(2);
+        line(width * 0.25, height * 0.75, width * 0.75, height * 0.75); //zona de golpe
+
+
         fill(40);
         noStroke();
         rect(0, 0, width, height * 0.1); //barra superior
@@ -43,15 +51,12 @@ class InterfazJuego {
         rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02);
         fill(...this.rosa);
         rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02); //barra de la cancion (tiempo d duracion)
-        
+
         fill(70);
         circle(height * 0.1, height * 0.9, height / 4); //zona donde muestra el combo
 
         fill(...this.menta);
         circle(height * 0.1, height * 0.9, height / 8); //circulo mas chico
-
-        stroke(0);
-        line(0, height * 0.75, width, height * 0.75); //zona d golpe
 
         noStroke();
 
