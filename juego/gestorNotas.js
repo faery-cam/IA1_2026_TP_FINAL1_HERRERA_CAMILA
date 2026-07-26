@@ -15,6 +15,8 @@ class GestorNotas {
         this.tpoCaida = 0;
         this.tpoInicio = 0;
         this.tpoPausa = 0;
+
+        this.rosa = CONFIG.colores.rosa;
     }
 
     cargarCancion(cancion) {
@@ -63,6 +65,13 @@ class GestorNotas {
     draw() {
         if (this.estado === "contador") {
             this.contador.draw();
+        }
+
+        if (this.estado === "pausa") {
+            fill(this.rosa);
+            stroke(255);
+            textSize(16);
+            text("Juego Pausado", width / 2, height * 0.15);
         }
 
         this.dibujarNotas();

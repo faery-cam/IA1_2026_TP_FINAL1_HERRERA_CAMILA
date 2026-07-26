@@ -6,7 +6,7 @@ const CONFIG = {
     },
 
     hud: {
-        y: 370,
+        y: 10,
         size: 20,
     },
 

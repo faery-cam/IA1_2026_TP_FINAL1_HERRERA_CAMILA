@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(700, 400);
 
   menuMove.playMode('restart');
   menuSelect.playMode('restart');
@@ -29,7 +29,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(CONFIG.colores.menta);
   mundo.escenaActual.draw();
 }
 

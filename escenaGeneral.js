@@ -5,10 +5,12 @@ class EscenaGeneral {
         this.ventana = new Ventana();
         this.musica = new Musica();
         this.fondos = new Fondos();
+
+        this.rosa = CONFIG.colores.rosa;
+        this.menta = CONFIG.colores.menta;
     }
 
     draw() {
-        this.hud.draw();
         this.ventana.draw();
         this.update();
     }

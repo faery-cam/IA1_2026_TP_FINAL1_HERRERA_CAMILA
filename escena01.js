@@ -2,11 +2,11 @@ class PantallaInicio extends EscenaGeneral {
     constructor() {
         super();
 
-        this.jugar = new Boton(150, 100, 100, 30, () => mundo.elegirEscena(1), { click: menuSelect });
-        this.comoJugar = new Boton(130, 140, 140, 30, () => this.ventana.open("comoJugar"), { click: menuSelect });
-        this.elegirNivel = new Boton(120, 180, 160, 30, () => this.ventana.open("elegirNivel"), { click: menuSelect });
-        this.configuracion = new Boton(120, 220, 160, 30, () => this.ventana.open("configuracion"), { click: menuSelect });
-        this.extras = new Boton(160, 260, 80, 30, () => this.ventana.open("extras"), { click: menuSelect });
+        this.jugar = new Boton(width * 0.1, height * 0.25, width * 0.4, height * 0.09, () => mundo.elegirEscena(1), { click: menuSelect });
+        this.comoJugar = new Boton(width * 0.1, height * 0.36, width * 0.4, height * 0.09, () => this.ventana.open("comoJugar"), { click: menuSelect });
+        this.elegirNivel = new Boton(width * 0.1, height * 0.47, width * 0.4, height * 0.09, () => this.ventana.open("elegirNivel"), { click: menuSelect });
+        this.configuracion = new Boton(width * 0.1, height * 0.59, width * 0.4, height * 0.09, () => this.ventana.open("configuracion"), { click: menuSelect });
+        this.extras = new Boton(width * 0.1, height * 0.70, width * 0.4, height * 0.09, () => this.ventana.open("extras"), { click: menuSelect });
 
         //botones HUD
         this.hud.onInicio = () => mundo.elegirEscena(0);
@@ -20,21 +20,38 @@ class PantallaInicio extends EscenaGeneral {
     }
 
     draw() {
-
         this.fondos.halftone();
-        textSize(35);
-        fill(255)
-        textAlign(CENTER);
-        text("TITULO", 200, 50);
 
-        rect(80, 80, 240, 240, 10);
-        stroke(0);
-        textSize(28);
-        text("Jugar", 200, 120);
-        text("Como jugar", 200, 160);
-        text("Elegir Nivel", 200, 200);
-        text("Configuracion", 200, 240);
-        text("Extras", 200, 280);
+        textSize(width / 20);//(35)
+        textAlign(CENTER);
+        stroke(255);
+        strokeWeight(3);
+        fill(...this.rosa);
+        text("TITULO", width / 2, height / 8);
+
+        strokeWeight(1);
+        fill(255,200)
+        rect(width * 0.13, height * 0.2, width * 0.34, height * 0.64, 10);
+
+        noStroke();
+        fill(20, 45, 30);
+        rect(width * 0.1, height * 0.25, width * 0.4, height * 0.09, 5);
+        rect(width * 0.1, height * 0.36, width * 0.4, height * 0.09, 5);
+        rect(width * 0.1, height * 0.47, width * 0.4, height * 0.09, 5);
+        rect(width * 0.1, height * 0.59, width * 0.4, height * 0.09, 5);
+        rect(width * 0.1, height * 0.70, width * 0.4, height * 0.09, 5);
+        
+        
+        textSize(width / 30);//(24)
+        textAlign(LEFT);
+        stroke(this.rosa);
+        strokeWeight(2);
+        fill(255)
+        text("Jugar", width * 0.15, height * 0.31);
+        text("Como jugar", width * 0.15, height * 0.42);
+        text("Elegir Nivel", width * 0.15, height * 0.53);
+        text("Configuración", width * 0.15, height * 0.65);
+        text("Extras", width * 0.15, height * 0.76);
 
         super.draw();
     }

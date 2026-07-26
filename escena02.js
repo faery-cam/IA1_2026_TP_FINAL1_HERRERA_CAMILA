@@ -38,6 +38,7 @@ class Nivel_01 extends EscenaGeneral {
     draw() {
         this.fondos.draw();
         this.gestor.draw();
+        this.hud.draw();
         super.draw();
     }
 

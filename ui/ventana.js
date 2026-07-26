@@ -6,6 +6,9 @@ class Ventana {
         this.y = 0;
         this.w = 0;
         this.h = 0;
+        this.rosa = CONFIG.colores.rosa;
+        this.menta = CONFIG.colores.menta;
+
         this.alConfirmar = () => { };
         this.alCerrar = () => { };
 
@@ -125,15 +128,19 @@ class Ventana {
     comoJugar() { }
 
     elegirNivel() {
-        this.dibujarMarco(10, 10, 380, 380);
-        text("Elegir escena", 200, 50);
-        text("X", 360, 50);
-        rect(30, 80, 150, 70, 15);
-        rect(30, 170, 150, 70, 15);
-        rect(30, 260, 150, 70, 15);
-        rect(220, 80, 150, 70, 15);
-        rect(220, 170, 150, 70, 15);
-        rect(220, 260, 150, 70, 15);
+        this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
+        rect(width * 0.125, height * 0.35, width * 0.15, height * 0.125, 10);
+        rect(width * 0.325, height * 0.35, width * 0.15, height * 0.125, 10);
+        rect(width * 0.125, height * 0.55, width * 0.15, height * 0.125, 10);
+
+        textAlign(CENTER);
+        text("Elegir Nivel", width * 0.3, height * 0.3);
+        textSize(width / 40);
+        text("X", width * 0.47, height * 0.27); //360, 50
+        text("Nivel 1", width * 0.2, height * 0.525);
+        text("Nivel 2", width * 0.4, height * 0.525);
+        text("Nivel 3", width * 0.2, height * 0.725);
+
     }
 
     configuracion() {
@@ -144,19 +151,33 @@ class Ventana {
     }
 
     extras() {
-        this.dibujarMarco(60, 100, 280, 200);
-        textSize(20);
-        text("Informática Aplicada 1, 2026", 200, 140);
-        text("Hecho por:", 200, 180);
-        text("GitHub del proyecto", 200, 220);
-        text("Cerrar", 200, 280);
+        stroke(...this.menta);
+        strokeWeight(1);
+        //fill(40, 60, 50); //20, 90, 60
+        this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
+        textSize(15);
+        textAlign(CENTER);
+        text("Informática Aplicada 1, 2026", width * 0.3, height * 0.3);
+        text("Hecho por: Herrera Camila", width * 0.3, height * 0.5);
+        text("GitHub del proyecto", width * 0.3, height * 0.6);
+        text("Cerrar", width * 0.3, height * 0.85);
     }
 
     salir() {
-        this.dibujarMarco(60, 150, 280, 100);
+        stroke(this.menta);
+        fill(40, 60, 50);
+        this.dibujarMarco(width * 0.25, height * 0.325, width * 0.5, height * 0.35);
+
+        stroke(0)
+        fill(this.rosa);
+        textAlign(CENTER);
+        textSize(16);
+        text("Perdera su progreso.", width * 0.5, height * 0.48);
+        textSize(18);
+        text("¿Desea abandonar la partida?", width * 0.5, height * 0.4);
+        fill(255)
         textSize(20);
-        text("¿Desea abandonar la partida?", 200, 190);
-        text("Sí", 130, 230);
-        text("No", 270, 230);
+        text("Sí", width * 0.4, height * 0.6);
+        text("No", width * 0.6, height * 0.6);
     }
 }

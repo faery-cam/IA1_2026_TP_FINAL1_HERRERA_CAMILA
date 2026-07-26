@@ -21,7 +21,8 @@ class InterfazJuego {
 
     draw() {
         fill(40);
-        rect(0, 0, width, height * 0.08); //barra superior
+        noStroke();
+        rect(0, 0, width, height * 0.1); //barra superior
 
         quad(
             width * 0.84,
@@ -38,9 +39,11 @@ class InterfazJuego {
         rect(0, height * 0.9, width, height); //barra inferior
 
         stroke(255);
+        fill(20, 45, 30);
+        rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02);
         fill(...this.rosa);
         rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02); //barra de la cancion (tiempo d duracion)
-
+        
         fill(70);
         circle(height * 0.1, height * 0.9, height / 4); //zona donde muestra el combo
 
@@ -55,11 +58,11 @@ class InterfazJuego {
         fill(...this.rosa);
         textAlign(LEFT, CENTER);
         textSize(width / 40); //(15-14)
-        text(this.nombreCancion, 30, height * 0.04);
+        text(this.nombreCancion, 30, height * 0.05);
 
         textAlign(RIGHT);
         textSize(width / 37.5); //(16)
-        text("Nivel " + this.numNivel, width * 0.98, height * 0.04);
+        text("Nivel " + this.numNivel, width * 0.98, height * 0.05);
         fill(0);
         textSize(width / 50); //(12)
 

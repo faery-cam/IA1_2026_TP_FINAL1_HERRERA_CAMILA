@@ -13,14 +13,6 @@ class Fondos {
         this.halftone();
     }
 
-    update() {
-
-    }
-
-    drawImagen() {
-
-    }
-
     halftone() {
         noStroke();
         fill(255);

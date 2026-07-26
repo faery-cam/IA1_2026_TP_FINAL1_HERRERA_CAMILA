@@ -2,25 +2,28 @@ class HUD {
     constructor() {
         this.y = CONFIG.hud.y;
         this.size = CONFIG.hud.size;
+        this.rosa = CONFIG.colores.rosa;
+        this.menta = CONFIG.colores.menta;
 
-        this.inicio = new Boton(140, this.y, this.size, this.size, () => this.onInicio(), { click: menuSelect2 });
-        this.prev = new Boton(170, this.y, this.size, this.size, () => this.onPrev(), { click: menuSelect });
-        this.sig = new Boton(210, this.y, this.size, this.size, () => this.onSig(), { click: menuSelect });
-        this.config = new Boton(240, this.y, this.size, this.size, () => this.onConfig(), { click: pause });
+        this.inicio = new Boton(width / 2 - this.size * 3, this.y, this.size, this.size, () => this.onInicio(), { click: menuSelect2 });
+        this.prev = new Boton(width / 2 - this.y * 3, this.y, this.size, this.size, () => this.onPrev(), { click: menuSelect });
+        this.sig = new Boton(width / 2 + this.y, this.y, this.size, this.size, () => this.onSig(), { click: menuSelect });
+        this.config = new Boton(width / 2 + this.size * 2, this.y, this.size, this.size, () => this.onConfig(), { click: pause });
     }
 
     draw() {//botones 20x20
-        fill(this.inicio.isHover() ? "pink" : 255);
-        rect(140, 370, 20, 20);//inicio
+        noStroke();
+        fill(this.inicio.isHover() ? this.rosa : this.menta);
+        rect(width / 2 - this.size * 3, this.y, this.size, this.size);//inicio
 
-        fill(this.prev.isHover() ? "pink" : 255);
-        triangle(170, 380, 190, 370, 190, 390);//prev
+        fill(this.prev.isHover() ? this.rosa : this.menta);
+        triangle(width / 2 - this.y * 3, this.size, width / 2 - this.y, this.y + this.size, width / 2 - this.y, this.y);//prev
 
-        fill(this.sig.isHover() ? "pink" : 255);
-        triangle(210, 370, 210, 390, 230, 380);//sig
+        fill(this.sig.isHover() ? this.rosa : this.menta);
+        triangle(width / 2 + this.y * 3, this.size, width / 2 + this.y, this.y + this.size, width / 2 + this.y, this.y);//sig
 
-        fill(this.config.isHover() ? "pink" : 255);
-        circle(250, 380, 20);//config
+        fill(this.config.isHover() ? this.rosa : this.menta);
+        circle(width / 2 + this.y * 5, this.size, this.size);//config
     }
 
     update() {
