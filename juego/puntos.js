@@ -1,6 +1,6 @@
 class Puntos {
     constructor() {
-        this.zonaGolpe = CONFIG.juego.zonaGolpe;
+        this.zonaGolpe = zonaGolpeJuego;
         this.combo = 0;
         this.maxCombo = 0;
         this.puntaje = 0;

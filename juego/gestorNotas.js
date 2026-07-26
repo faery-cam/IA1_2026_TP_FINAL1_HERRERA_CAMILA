@@ -9,7 +9,7 @@ class GestorNotas {
 
         this.estado = "contador";
         this.cancion = null;
-        this.zonaGolpe = CONFIG.juego.zonaGolpe;
+        this.zonaGolpe = zonaGolpeJuego;
         this.spawnY = CONFIG.juego.spawnY;
 
         this.tpoCaida = 0;
@@ -63,6 +63,11 @@ class GestorNotas {
     }
 
     draw() {
+        this.interfaz.draw();
+        this.particulas.draw();
+        this.dibujarNotas();
+        this.puntos.draw();
+
         if (this.estado === "contador") {
             this.contador.draw();
         }
@@ -73,11 +78,6 @@ class GestorNotas {
             textSize(16);
             text("Juego Pausado", width / 2, height * 0.15);
         }
-
-        this.dibujarNotas();
-        this.particulas.draw();
-        this.interfaz.draw();
-        this.puntos.draw();
     }
 
     crearNotas() {

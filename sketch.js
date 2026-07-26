@@ -1,9 +1,10 @@
 const mundo = new Mundo();
 const canciones = new Canciones();
 let levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer;
+let zonaGolpeJuego;
+let carrilesJuego = [];
 let menuMusica = [];
 let fondos = [];
-
 
 function preload() {
   //ingresar cosas que se cargan previamente
@@ -11,16 +12,19 @@ function preload() {
 
   cargarAudios();
   cargarImagenes();
-
 }
 
 function setup() {
   createCanvas(700, 400);
 
+  textFont('Zen Dots');
+
   menuMove.playMode('restart');
   menuSelect.playMode('restart');
 
-  textFont('Zen Dots');
+
+  zonaGolpeJuego = height * 0.75;
+  carrilesJuego = [width * 0.31, width * 0.435, width * 0.56, width * 0.68];
 
   //hacemos un push dentro de mundo con cada escena llamando a 'addEscena'
   mundo.addEscena(new PantallaInicio());
@@ -66,7 +70,6 @@ function cargarAudios() {
   menuMusica.push(loadSound('assets/audio/menuMusica/Diabolic Waltz.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Even Angels feel joy.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Sakura Kiss For String.mp3'));
-
 }
 
 function cargarImagenes() {
@@ -75,5 +78,4 @@ function cargarImagenes() {
   fondos.push(loadImage('assets/img/fondos/BG03.png'));
   fondos.push(loadImage('assets/img/fondos/BG04.png'));
   fondos.push(loadImage('assets/img/fondos/BG05.png'));
-
 }

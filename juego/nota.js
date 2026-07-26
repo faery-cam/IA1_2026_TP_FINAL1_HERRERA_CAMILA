@@ -1,12 +1,11 @@
-const carriles = [...CONFIG.juego.carriles];
-
 class Nota {
     constructor(carril, tecla, velocidad) {
+        this.carriles = carrilesJuego;
         this.carril = carril;
         this.tecla = tecla;
         this.velocidad = velocidad;
 
-        this.x = carriles[carril];
+        this.x = this.carriles[carril];
         this.y = CONFIG.juego.spawnY;
         this.activa = true;
     }
