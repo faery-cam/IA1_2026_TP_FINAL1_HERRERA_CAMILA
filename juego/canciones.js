@@ -1,8 +1,8 @@
 class Canciones {
     nivel_1() {
         return {
-            nombre: "a",
-            src: "a",
+            nombre: "Girl Like Me - PinkPhanteress",
+            src: cancionesJuego[0],
             nivel: "1",
             velocidad: 3,
             notas: [
@@ -16,6 +16,8 @@ class Canciones {
 
     nivel_2() {
         return {
+            nombre: "Biii:-P - XLOV",
+            src: cancionesJuego[1],
             nivel: "2",
             velocidad: 3,
             notas: [],
@@ -24,6 +26,8 @@ class Canciones {
 
     nivel_3() {
         return {
+            nombre: "Dec. - Kanaria", /* HITO Mania - Sasuke Haraguchi */
+            src: cancionesJuego[2],
             nivel: "3",
             velocidad: 3,
             notas: [],
