@@ -22,7 +22,7 @@ class PantallaInicio extends EscenaGeneral {
     }
 
     draw() {
-        fondo.halftone();
+        this.fondo.halftone();
 
         textSize(width / 20);//(35)
         textAlign(CENTER);

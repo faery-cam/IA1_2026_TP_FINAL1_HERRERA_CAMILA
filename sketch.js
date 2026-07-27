@@ -1,7 +1,5 @@
 const mundo = new Mundo();
-const fondo =  new Fondo();
 const canciones = new Canciones();
-
 
 let levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer;
 

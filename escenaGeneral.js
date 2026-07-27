@@ -3,8 +3,10 @@ class EscenaGeneral {
     constructor() {
         this.hud = new HUD(); //creamos el objeto que tiene el hud
         this.configuracion = new Configuracion();
+        
         this.ventana = new Ventana(this.configuracion);
         this.musica = new Musica();
+        this.fondo = new Fondo();
 
         this.rosa = CONFIG.colores.rosa;
         this.menta = CONFIG.colores.menta;

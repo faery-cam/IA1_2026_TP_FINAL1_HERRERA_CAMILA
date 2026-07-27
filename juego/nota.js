@@ -15,6 +15,10 @@ class Nota {
     }
 
     draw() {
-        circle(this.x, this.y, 20);
+        rectMode(CENTER);
+        fill(CONFIG.colores.rosa);
+        stroke(255);
+        rect(this.x, this.y, width * 0.12, height * 0.05, 5);
+        rectMode(CORNER);
     }
 }

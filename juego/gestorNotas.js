@@ -28,6 +28,7 @@ class GestorNotas {
 
     cargarCancion(cancion) {
         this.cancion = cancion;
+        this.reiniciarCancion();
         this.interfaz.subirCancion(this.cancion.nombre, this.cancion.nivel)
 
         this.tiempoCaida();
@@ -55,6 +56,7 @@ class GestorNotas {
                 }
 
                 this.contador.reiniciar();
+                    this.iniciarCancion();
                 this.estado = "jugando";
             }
             return;
@@ -91,7 +93,7 @@ class GestorNotas {
             text("Juego Pausado", width / 2, height * 0.15);
         }
         if (this.estado === "final") {
-            this.finPartida.draw(this.puntos,this.cancion.nombre, this.cancion.nivel);
+            this.finPartida.draw(this.puntos, this.cancion.nombre, this.cancion.nivel);
             return;
         }
     }
@@ -151,6 +153,7 @@ class GestorNotas {
 
     pausar() {
         this.estado = "pausa";
+        this.cancion.src.pause();
         this.tpoPausa = millis();
         pause.play();
     }
@@ -162,6 +165,7 @@ class GestorNotas {
 
     reiniciar() {
         this.puntos.reiniciar();
+        this.reiniciarCancion();
         this.cargarCancion(this.cancion);
     }
 
@@ -177,5 +181,13 @@ class GestorNotas {
                 break;
             }
         }
+    }
+
+    iniciarCancion() {
+        this.cancion.src.play();
+    }
+
+    reiniciarCancion() {
+        this.cancion.src.stop();
     }
 }

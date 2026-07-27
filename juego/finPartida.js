@@ -1,5 +1,7 @@
 class FinPartida {
     constructor() {
+        this.fondo= new Fondo();
+
         this.btnInicio = new Boton(width * 0.51, height * 0.88, width * 0.22, height * 0.08, () => { this.onInicio(); });
         this.btnSiguiente = new Boton(width * 0.75, height * 0.88, width * 0.22, height * 0.08, () => { this.onSiguiente(); });
 
@@ -11,7 +13,7 @@ class FinPartida {
         noStroke();
         fill(this.rosa);
         rect(0, 0, width, height);//fondo rosa
-        fondo.halftone();
+        this.fondo.halftone();
 
         fill(40);
         rect(0, 0, width, height * 0.1); //barra superior
