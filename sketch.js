@@ -1,4 +1,5 @@
 const mundo = new Mundo();
+const fondo =  new Fondo();
 const canciones = new Canciones();
 
 

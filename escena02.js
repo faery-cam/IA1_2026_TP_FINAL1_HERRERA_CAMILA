@@ -45,12 +45,12 @@ class Nivel_01 extends EscenaGeneral {
     entrar() {
         //lo que se ejecuta primero al entrar al nivel/escena. De esta manera queda coordinado el tiempo y detiene la musica q este sonando en menu u otra zona.
         this.musica.detener();
-        this.fondos.recorrerFondos();
+        fondo.recorrerFondos();
         this.gestor.cargarCancion(canciones.nivel_1());
     }
 
     draw() {
-        this.fondos.draw();
+        fondo.draw();
         this.gestor.draw();
         this.hud.draw();
         super.draw();

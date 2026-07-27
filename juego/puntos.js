@@ -26,7 +26,7 @@ class Puntos {
                 fill(60, 210, 200, this.alpha); //celeste
                 break;
             case "Miss":
-                fill(110, 10, 200, this.alpha); //morado
+                fill(150, 50, 255, this.alpha); //morado
                 break;
         }
 

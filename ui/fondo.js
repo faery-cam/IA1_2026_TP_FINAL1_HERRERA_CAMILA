@@ -1,4 +1,4 @@
-class Fondos {
+class Fondo {
     constructor() {
         this.imagenes = fondos;
         this.imagenActual = this.imagenes[this.i];
