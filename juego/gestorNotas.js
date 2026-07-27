@@ -2,10 +2,11 @@ const fps = CONFIG.juego.fps;
 
 class GestorNotas {
     constructor() {
-        this.contador = new CuentaAtras();
         this.puntos = new Puntos();
         this.particulas = new GestorParticulas();
+        this.contador = new CuentaAtras();
         this.interfaz = new InterfazJuego();
+        this.finPartida = new FinPartida();
 
         this.estado = "contador";
         this.cancion = null;
@@ -18,6 +19,9 @@ class GestorNotas {
         this.tpoCaida = 0;
         this.tpoInicio = 0;
         this.tpoPausa = 0;
+
+        this.finPartida.onInicio = () => { this.reiniciar(); mundo.elegirEscena(0); };
+        this.finPartida.onSiguiente = () => { this.reiniciar(); mundo.escenaSiguiente(); };
 
         this.rosa = CONFIG.colores.rosa;
     }
@@ -60,6 +64,10 @@ class GestorNotas {
             return;
         }
 
+        if (this.estado === "final") {
+            return;
+        }
+
         this.crearNotas();
         this.actualizarNotas();
         this.eliminarNotas();
@@ -81,6 +89,10 @@ class GestorNotas {
             stroke(255);
             textSize(16);
             text("Juego Pausado", width / 2, height * 0.15);
+        }
+        if (this.estado === "final") {
+            this.finPartida.draw(this.puntos,this.cancion.nombre, this.cancion.nivel);
+            return;
         }
     }
 

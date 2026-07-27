@@ -68,9 +68,9 @@ class InterfazJuego {
         textAlign(RIGHT);
         textSize(width / 37.5); //(16)
         text("Nivel " + this.numNivel, width * 0.98, height * 0.05);
+
         fill(0);
         textSize(width / 50); //(12)
-
         text(this.puntaje, width * 0.98, height * 0.94);//puntaje
         fill(255);
         text("Puntuación", width * 0.98, height * 0.875);
