@@ -62,8 +62,8 @@ class InterfazJuego {
 
         fill(...this.rosa);
         textAlign(LEFT, CENTER);
-        textSize(width / 40); //(15-14)
-        text(this.nombreCancion, 30, height * 0.05);
+        textSize(width / 60); //(15-14)
+        text(this.nombreCancion, 30, height * 0.05);  //nombre  de la cancion
 
         textAlign(RIGHT);
         textSize(width / 37.5); //(16)
@@ -71,7 +71,7 @@ class InterfazJuego {
         fill(0);
         textSize(width / 50); //(12)
 
-        text(this.puntaje, width * 0.98, height * 0.94);
+        text(this.puntaje, width * 0.98, height * 0.94);//puntaje
         fill(255);
         text("Puntuación", width * 0.98, height * 0.875);
 

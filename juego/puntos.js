@@ -109,5 +109,6 @@ class Puntos {
         this.good = 0;
         this.miss = 0;
         this.puntaje = 0;
+        this.feedback = "";
     }
 }

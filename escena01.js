@@ -13,6 +13,8 @@ class PantallaInicio extends EscenaGeneral {
         this.hud.onPrev = () => mundo.escenaPrevia();
         this.hud.onSig = () => mundo.escenaSiguiente();
         this.hud.onConfig = () => this.ventana.open("configuracion");
+        //boton de configuracion
+        this.ventana.onAtras = () => { this.ventana.close(); }
     }
 
     entrar() {
@@ -27,7 +29,7 @@ class PantallaInicio extends EscenaGeneral {
         stroke(255);
         strokeWeight(3);
         fill(...this.rosa);
-        text("TITULO", width / 2, height / 8);
+        text("Dj-TSUKI", width / 2, height / 8);
 
         strokeWeight(1);
         fill(255, 200)

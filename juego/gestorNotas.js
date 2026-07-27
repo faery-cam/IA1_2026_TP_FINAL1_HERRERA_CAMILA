@@ -12,6 +12,9 @@ class GestorNotas {
         this.zonaGolpe = zonaGolpeJuego;
         this.spawnY = CONFIG.juego.spawnY;
 
+        this.indiceNota = 0;
+        this.notas = [];
+
         this.tpoCaida = 0;
         this.tpoInicio = 0;
         this.tpoPausa = 0;
@@ -28,11 +31,13 @@ class GestorNotas {
         this.notas = [];
 
         this.contador.reiniciar();
-        this.estado = "contador";
+        this.tpoInicio = 0;
         this.tpoPausa = 0;
+        this.estado = "contador";
     }
 
     update() {
+        this.interfaz.update(this.puntos.combo, this.puntos.puntaje);
         if (this.estado === "contador") {
             let termino = this.contador.update();
 
@@ -59,12 +64,11 @@ class GestorNotas {
         this.actualizarNotas();
         this.eliminarNotas();
         this.particulas.update();
-        this.interfaz.update(this.puntos.combo, this.puntos.puntaje);
     }
 
     draw() {
-        this.interfaz.draw();
         this.particulas.draw();
+        this.interfaz.draw();
         this.dibujarNotas();
         this.puntos.draw();
 
@@ -142,6 +146,11 @@ class GestorNotas {
     reanudar() {
         this.estado = "contador";
         this.contador.reiniciar();
+    }
+
+    reiniciar() {
+        this.puntos.reiniciar();
+        this.cargarCancion(this.cancion);
     }
 
     tocarCarril(carrilPres) {

@@ -70,10 +70,10 @@ function cargarAudios() {
   efectosSonido = [levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer];
 
 
+  menuMusica.push(loadSound('assets/audio/menuMusica/Cautivadora gelatina de cafe.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Lingering among flowers.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Project Diva X Home.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Judgment knights of thunder.mp3'));
-  menuMusica.push(loadSound('assets/audio/menuMusica/Cautivadora gelatina de cafe.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Angel fall down.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Aroma Bousou Tokkyuu.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/DANGANRONPA SUPER MIX.mp3'));

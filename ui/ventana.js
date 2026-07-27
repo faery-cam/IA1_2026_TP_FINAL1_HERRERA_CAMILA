@@ -85,6 +85,7 @@ class Ventana {
                 this.btnJuegoMenos.mouseClicked();
                 this.btnFxMas.mouseClicked();
                 this.btnFxMenos.mouseClicked();
+                this.btnAtras.mouseClicked();
                 break;
 
             case "extras":
@@ -94,6 +95,13 @@ class Ventana {
             case "salir":
                 this.btnSi.mouseClicked();
                 this.btnNo.mouseClicked();
+                break;
+
+            case "opciones":
+                this.btnReanudar.mouseClicked();
+                this.btnReintentar.mouseClicked();
+                this.btnConfiguracion.mouseClicked();
+                this.btnInicio.mouseClicked();
                 break;
         }
 
@@ -115,6 +123,7 @@ class Ventana {
                 this.btnJuegoMenos.update();
                 this.btnFxMas.update();
                 this.btnFxMenos.update();
+                this.btnAtras.update();
                 break;
 
             case "extras":
@@ -124,6 +133,13 @@ class Ventana {
             case "salir":
                 this.btnSi.update();
                 this.btnNo.update();
+                break;
+
+            case "opciones":
+                this.btnReanudar.update();
+                this.btnReintentar.update();
+                this.btnConfiguracion.update();
+                this.btnInicio.update();
                 break;
         }
     }
@@ -273,7 +289,7 @@ class Ventana {
         noStroke();
         text("Reanudar", width / 2, height * 0.34);
         text("Reintentar", width / 2, height * 0.46);
-        text("Opciones", width / 2, height * 0.58);
+        text("Configuración", width / 2, height * 0.58);
         text("Inicio", width / 2, height * 0.7);
 
     }
@@ -300,21 +316,39 @@ class Ventana {
         },
             { click: menuCancel });
 
+        this.btnAtras = new Boton(width * 0.3, height * 0.66, width * 0.4, height * 0.07, () => this.onAtras(), { click: menuCancel });
+
+        /* ==============BOTONES OPCIONES============== */
+        this.btnReanudar = new Boton(width * 0.3, height * 0.3, width * 0.4, height * 0.07, () => this.onReanudar(), { click: menuSelect2 });
+
+        this.btnReintentar = new Boton(width * 0.3, height * 0.42, width * 0.4, height * 0.07, () => this.onReiniciar(), { click: menuSelect2 });
+
+        this.btnConfiguracion = new Boton(width * 0.3, height * 0.54, width * 0.4, height * 0.07, () => this.onConfiguracion(), { click: menuSelect2 });
+
+        this.btnInicio = new Boton(width * 0.3, height * 0.66, width * 0.4, height * 0.07, () => this.onInicio(), { click: menuSelect2 });
+
         //=======BOTONES CONFIGURACION=========
+        /* FILA 1 */
         this.btnMenuMas = new Boton(width * 0.64, height * 0.3, width * 0.04, width * 0.03,
             () => this.configuracion.setVolMusica(0.1), { click: timer });
         this.btnMenuMenos = new Boton(width * 0.51, height * 0.3, width * 0.03, width * 0.03,
             () => this.configuracion.setVolMusica(-0.1), { click: timer });
-
+        /* FILA 2 */
         this.btnJuegoMas = new Boton(width * 0.64, height * 0.42, width * 0.04, width * 0.03,
             () => this.configuracion.setVolJuego(0.1), { click: timer });
         this.btnJuegoMenos = new Boton(width * 0.51, height * 0.42, width * 0.03, width * 0.03,
             () => this.configuracion.setVolJuego(-0.1), { click: timer });
-
+        /* FILA 3 */
         this.btnFxMas = new Boton(width * 0.64, height * 0.54, width * 0.04, width * 0.03,
             () => this.configuracion.setVolFX(0.1), { click: timer });
         this.btnFxMenos = new Boton(width * 0.51, height * 0.54, width * 0.03, width * 0.03,
             () => this.configuracion.setVolFX(-0.1), { click: timer });
-
     }
+
+    /* FUNCIONES VACIAS, son para darle al boton la accion que uno quiera desde el lugar donde se lo llama */
+    onAtras() { }
+    onReanudar() { }
+    onReiniciar() { }
+    onConfiguracion() { }
+    onInicio() { }
 }
