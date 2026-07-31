@@ -6,10 +6,64 @@ class Canciones {
             nivel: "1",
             velocidad: 3,
             notas: [
-                { tiempo: 3000, carril: 0, tecla: 'D' },
-                { tiempo: 4000, carril: 1, tecla: 'F' },
-                { tiempo: 5000, carril: 2, tecla: 'J' },
-                { tiempo: 10000, carril: 3, tecla: 'K' }
+                { tiempo: 0, carril: 0 },
+                { tiempo: 430, carril: 1 },
+                { tiempo: 878, carril: 2 },
+                { tiempo: 1301, carril: 3 },
+                { tiempo: 1749, carril: 2 },
+                { tiempo: 2169, carril: 1 },
+                { tiempo: 2628, carril: 0 },
+                { tiempo: 3083, carril: 3 },
+                { tiempo: 3227, carril: 2 },
+                { tiempo: 3349, carril: 1 },
+
+                { tiempo: 3495, carril: 0 },
+                { tiempo: 3495, carril: 3 },
+
+                { tiempo: 3924, carril: 0 },
+                { tiempo: 3924, carril: 2 },
+
+                { tiempo: 4353, carril: 0 },
+                { tiempo: 4353, carril: 1 },
+
+                { tiempo: 4789, carril: 0 },
+                { tiempo: 4789, carril: 3 },
+
+                { tiempo: 5243, carril: 1 },
+                { tiempo: 5243, carril: 3 },
+
+                { tiempo: 5676, carril: 2 },
+                { tiempo: 5676, carril: 3 },
+
+                { tiempo: 6102, carril: 0 },
+                { tiempo: 6102, carril: 3 },
+
+                { tiempo: 6529, carril: 1 },
+                { tiempo: 6529, carril: 2 },
+
+                { tiempo: 6983, carril: 0 },
+                { tiempo: 6983, carril: 1 },
+
+                { tiempo: 7402, carril: 1 },
+                { tiempo: 7402, carril: 2 },
+
+                { tiempo: 7858, carril: 2 },
+                { tiempo: 7858, carril: 3 },
+
+                { tiempo: 8283, carril: 1 },
+                { tiempo: 8283, carril: 2 },
+
+                { tiempo: 8731, carril: 0 },
+                { tiempo: 8731, carril: 3 },
+
+                { tiempo: 9150, carril: 0 },
+                { tiempo: 9150, carril: 2 },
+
+                { tiempo: 9589, carril: 1 },
+                { tiempo: 9589, carril: 3 },
+
+                { tiempo: 10045, carril: 0 },
+                { tiempo: 10045, carril: 3 },
             ],
         }
     }
