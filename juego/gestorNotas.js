@@ -12,6 +12,7 @@ class GestorNotas {
         this.cancion = null;
         this.zonaGolpe = zonaGolpeJuego;
         this.spawnY = CONFIG.juego.spawnY;
+        this.audioIniciado = false;
 
         this.indiceNota = 0;
         this.notas = [];
@@ -30,6 +31,7 @@ class GestorNotas {
         this.cancion = cancion;
         this.reiniciarCancion();
         this.interfaz.subirCancion(this.cancion.nombre, this.cancion.nivel)
+        this.audioIniciado = false;
 
         this.tiempoCaida();
         this.indiceNota = 0;
@@ -48,7 +50,7 @@ class GestorNotas {
 
             if (termino) {
                 if (this.tpoInicio === 0) {
-                    this.tpoInicio = millis();
+                    this.tpoInicio = millis() +this.tpoCaida;
                 }
                 else {
                     this.tpoInicio += millis() - this.tpoPausa;
@@ -56,7 +58,6 @@ class GestorNotas {
                 }
 
                 this.contador.reiniciar();
-                this.iniciarCancion();
                 this.estado = "jugando";
             }
             return;
@@ -68,6 +69,11 @@ class GestorNotas {
 
         if (this.estado === "final") {
             return;
+        }
+
+        if (!this.audioIniciado && this.tiempoActual() >= 0) {
+            this.iniciarCancion();
+            this.audioIniciado = true;
         }
 
         this.crearNotas();
