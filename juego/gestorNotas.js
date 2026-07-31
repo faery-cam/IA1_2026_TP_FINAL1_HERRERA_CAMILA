@@ -56,7 +56,7 @@ class GestorNotas {
                 }
 
                 this.contador.reiniciar();
-                    this.iniciarCancion();
+                this.iniciarCancion();
                 this.estado = "jugando";
             }
             return;
@@ -99,12 +99,12 @@ class GestorNotas {
     }
 
     crearNotas() {
-        let datosNota = this.cancion.notas[this.indiceNota];
-        if (!datosNota) return;
+        while (this.indiceNota < this.cancion.notas.length) {
+            let datosNota = this.cancion.notas[this.indiceNota];
+            let crear = datosNota.tiempo - this.tpoCaida; //calcula en que momento se tiene que crear la nota
 
-        let crear = datosNota.tiempo - this.tpoCaida; //calcula en que momento se tiene que crear la nota
+            if (this.tiempoActual() < crear) { break; }
 
-        if (this.tiempoActual() >= crear) {
             this.notas.push(
                 new Nota(
                     datosNota.carril, datosNota.tecla, this.cancion.velocidad
