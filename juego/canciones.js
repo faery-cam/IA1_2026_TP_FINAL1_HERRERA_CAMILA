@@ -4,7 +4,7 @@ class Canciones {
             nombre: "Girl Like Me - PinkPhanteress",
             src: cancionesJuego[0],
             nivel: "1",
-            velocidad: 3,
+            velocidad: 4,
             notas: [
                 { tiempo: 0, carril: 0 },
                 { tiempo: 430, carril: 1 },

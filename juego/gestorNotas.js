@@ -109,7 +109,7 @@ class GestorNotas {
             let datosNota = this.cancion.notas[this.indiceNota];
             let crear = datosNota.tiempo - this.tpoCaida; //calcula en que momento se tiene que crear la nota
 
-            if (this.tiempoActual() < crear) { break; }
+            if (this.tiempoActual() <= crear) { break; }
 
             this.notas.push(
                 new Nota(
