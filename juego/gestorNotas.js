@@ -134,7 +134,7 @@ class GestorNotas {
 
     eliminarNotas() {
         for (let i = this.notas.length - 1; i >= 0; i--) {
-            if (this.notas[i].y > this.zonaGolpe + 35) {
+            if (this.notas[i].y > this.zonaGolpe + 45) {
                 this.puntos.notaPerdida();
                 pressError.play();
                 this.notas.splice(i, 1);

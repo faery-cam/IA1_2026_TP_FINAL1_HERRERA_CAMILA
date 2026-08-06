@@ -51,7 +51,6 @@ class Puntos {
             this.mostrarFeedback("Perfect");
 
             this.perfect++;
-            pressNote.play();
             this.puntaje += 100;
             this.sumarCombo(true);
             return true;
@@ -60,16 +59,14 @@ class Puntos {
             this.mostrarFeedback("Good");
 
             this.good++;
-            pressNote2.play();
             this.puntaje += 30;
             this.sumarCombo(true);
             return true;
         }
-        else if (diferencia <= 25) {
+        else if (diferencia <= 35) {
             this.mostrarFeedback("Miss");
 
             this.miss++;
-            pressError.play();
             this.sumarCombo(false);
             return true;
         }

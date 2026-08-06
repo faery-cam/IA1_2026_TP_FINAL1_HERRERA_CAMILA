@@ -10,7 +10,6 @@ class Fondo {
 
     draw() {
         image(this.imagenActual, 0, 0, width, height);
-        this.halftone();
     }
 
     halftone() {
