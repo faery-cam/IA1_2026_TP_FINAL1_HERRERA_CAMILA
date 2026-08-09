@@ -1,7 +1,6 @@
 
 class Ventana {
-    constructor(configuracion) {
-        this.configuracion = configuracion;
+    constructor() {
         this.estado = null;
         this.x = 0;
         this.y = 0;
@@ -188,20 +187,20 @@ class Ventana {
         rect(width * 0.3, height * 0.54, width * 0.4, height * 0.07, 6);
         rect(width * 0.3, height * 0.66, width * 0.4, height * 0.07, 6);
 
-        textSize(16);
+        textSize(width / 43.5);//16
         textAlign(CENTER);
         fill(this.menta);
         stroke(0);
         text("Configuración", width / 2, height * 0.25);
 
         stroke(0);
-        textSize(14);
-        text(int(this.configuracion.volMusica * 100) + "%", width * 0.59, height * 0.345);
-        text(int(this.configuracion.volJuego * 100) + "%", width * 0.59, height * 0.465);
-        text(int(this.configuracion.volFX * 100) + "%", width * 0.59, height * 0.585);
+        textSize(width / 50);//14
+        text(int(config.volMusica * 100) + "%", width * 0.59, height * 0.345);
+        text(int(config.volJuego * 100) + "%", width * 0.59, height * 0.465);
+        text(int(config.volFX * 100) + "%", width * 0.59, height * 0.585);
 
         noStroke();
-        textSize(12);
+        textSize(width / 58);//12
         text("Atras", width / 2, height * 0.7);
         fill(this.rosa);
         textAlign(LEFT);
@@ -209,7 +208,7 @@ class Ventana {
         text("Volumen Juego", width * 0.32, height * 0.46);
         text("Volumen Efectos", width * 0.32, height * 0.58);
 
-        textSize(22);
+        textSize(width / 32);//22
         noStroke();
         //fila 1 MENU
         fill(this.btnMenuMas.isHover() ? this.menta : this.rosa);
@@ -233,7 +232,7 @@ class Ventana {
         strokeWeight(1);
         fill(20, 45, 30);
         this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
-        textSize(15);
+        textSize(width / 46);//15
         textAlign(CENTER);
         fill(3255);
         text("Informática Aplicada 1, 2026", width * 0.3, height * 0.3);
@@ -257,12 +256,12 @@ class Ventana {
         stroke(0)
         fill(this.rosa);
         textAlign(CENTER);
-        textSize(16);
+        textSize(width / 43.5);//16
         text("Perdera su progreso.", width * 0.5, height * 0.48);
-        textSize(18);
+        textSize(width / 38);//18
         text("¿Desea abandonar la partida?", width * 0.5, height * 0.4);
         fill(255)
-        textSize(20);
+        textSize(width / 35);//20
         text("Sí", width * 0.4, height * 0.6);
         text("No", width * 0.6, height * 0.6);
     }
@@ -280,12 +279,12 @@ class Ventana {
         rect(width * 0.3, height * 0.54, width * 0.4, height * 0.07, 6);
         rect(width * 0.3, height * 0.66, width * 0.4, height * 0.07, 6);
 
-        textSize(16);
+        textSize(width / 43.5);//16
         fill(...this.menta);
         stroke(0);
         text("Opciones", width / 2, height * 0.25);
 
-        textSize(12);
+        textSize(width / 58);//12
         noStroke();
         text("Reanudar", width / 2, height * 0.34);
         text("Reintentar", width / 2, height * 0.46);
@@ -330,19 +329,19 @@ class Ventana {
         //=======BOTONES CONFIGURACION=========
         /* FILA 1 */
         this.btnMenuMas = new Boton(width * 0.64, height * 0.3, width * 0.04, width * 0.03,
-            () => this.configuracion.setVolMusica(0.1), { click: timer });
+            () => config.setVolMusica(0.1), { click: timer });
         this.btnMenuMenos = new Boton(width * 0.51, height * 0.3, width * 0.03, width * 0.03,
-            () => this.configuracion.setVolMusica(-0.1), { click: timer });
+            () => config.setVolMusica(-0.1), { click: timer });
         /* FILA 2 */
         this.btnJuegoMas = new Boton(width * 0.64, height * 0.42, width * 0.04, width * 0.03,
-            () => this.configuracion.setVolJuego(0.1), { click: timer });
+            () => config.setVolJuego(0.1), { click: timer });
         this.btnJuegoMenos = new Boton(width * 0.51, height * 0.42, width * 0.03, width * 0.03,
-            () => this.configuracion.setVolJuego(-0.1), { click: timer });
+            () => config.setVolJuego(-0.1), { click: timer });
         /* FILA 3 */
         this.btnFxMas = new Boton(width * 0.64, height * 0.54, width * 0.04, width * 0.03,
-            () => this.configuracion.setVolFX(0.1), { click: timer });
+            () => config.setVolFX(0.1), { click: timer });
         this.btnFxMenos = new Boton(width * 0.51, height * 0.54, width * 0.03, width * 0.03,
-            () => this.configuracion.setVolFX(-0.1), { click: timer });
+            () => config.setVolFX(-0.1), { click: timer });
     }
 
     /* FUNCIONES VACIAS, son para darle al boton la accion que uno quiera desde el lugar donde se lo llama */

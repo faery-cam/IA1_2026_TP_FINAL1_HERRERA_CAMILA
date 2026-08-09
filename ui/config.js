@@ -1,7 +1,7 @@
 class Configuracion {
     constructor() {
-        this.volMusica = 0.4;
-        this.volJuego = 0.8;
+        this.volMusica = 0.2;
+        this.volJuego = 0.5;
         this.volFX = 0.2;
 
         this.aplicar();

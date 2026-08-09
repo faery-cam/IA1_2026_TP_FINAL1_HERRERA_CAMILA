@@ -47,7 +47,6 @@ class PantallaInicio extends EscenaGeneral {
         fill(this.extras.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.70, width * 0.4, height * 0.09, 5);
 
-
         textSize(width / 30);//(24)
         textAlign(LEFT);
         stroke(this.rosa);
@@ -59,6 +58,7 @@ class PantallaInicio extends EscenaGeneral {
         text("Configuración", width * 0.15, height * 0.65);
         text("Extras", width * 0.15, height * 0.76);
 
+        this.musica.miniReproductor();
         super.draw();
     }
 
@@ -89,6 +89,7 @@ class PantallaInicio extends EscenaGeneral {
         this.elegirNivel.mouseClicked();
         this.configuracion.mouseClicked();
         this.extras.mouseClicked();
+        this.musica.mouseClicked();
     }
 
     keyPressed(key, keyCode) {

@@ -6,7 +6,9 @@ class Puntos {
         this.puntaje = 0;
 
         this.perfect = 0;
+        this.great = 0;
         this.good = 0;
+        this.bad = 0;
         this.miss = 0;
         this.feedback;
 
@@ -22,8 +24,14 @@ class Puntos {
             case "Perfect":
                 fill(255, 60, 180, this.alpha); //rosa
                 break;
-            case "Good":
+            case "Great":
                 fill(60, 210, 200, this.alpha); //celeste
+                break;
+            case "Good":
+                fill(206, 236, 54, this.alpha);//verde lima
+                break;
+            case "Bad":
+                fill(239, 46, 46, this.alpha);//rojo
                 break;
             case "Miss":
                 fill(150, 50, 255, this.alpha); //morado
@@ -47,7 +55,7 @@ class Puntos {
         /* aca se puede comparar la nota para ver si fue perfect, good o miss en base a la distancia de la zona de golpe y la ubicacion de la nota al ser presionada */
         let diferencia = abs(this.zonaGolpe - notaPres);
 
-        if (diferencia <= 10) {
+        if (diferencia <= 12) {
             this.mostrarFeedback("Perfect");
 
             this.perfect++;
@@ -55,7 +63,15 @@ class Puntos {
             this.sumarCombo(true);
             return true;
         }
-        else if (diferencia <= 20) {
+        else if (diferencia <= 25) {
+            this.mostrarFeedback("Great");
+
+            this.great++;
+            this.puntaje += 50;
+            this.sumarCombo(true);
+            return true;
+        }
+        else if (diferencia <= 30) {
             this.mostrarFeedback("Good");
 
             this.good++;
@@ -63,10 +79,11 @@ class Puntos {
             this.sumarCombo(true);
             return true;
         }
-        else if (diferencia <= 35) {
-            this.mostrarFeedback("Miss");
+        else if (diferencia < 45) {
+            this.mostrarFeedback("Bad");
 
-            this.miss++;
+            this.bad++;
+            this.puntaje += 5;
             this.sumarCombo(false);
             return true;
         }
@@ -103,7 +120,9 @@ class Puntos {
         this.combo = 0;
         this.maxCombo = 0;
         this.perfect = 0;
+        this.great = 0;
         this.good = 0;
+        this.bad = 0;
         this.miss = 0;
         this.puntaje = 0;
         this.feedback = "";

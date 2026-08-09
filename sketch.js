@@ -12,12 +12,16 @@ let fondos = [];
 let zonaGolpeJuego;
 let carrilesJuego = [];
 
+const config = new Configuracion();
+
 function preload() {
   //ingresar cosas que se cargan previamente
   soundFormats('mp3', 'wav');
 
   cargarAudios();
   cargarImagenes();
+
+  config.aplicar();
 }
 
 function setup() {

@@ -86,7 +86,5 @@ class InterfazJuego {
 
         /* mando algunos valores en predeterminado para evitar fallos en otras zonas */
         strokeWeight(1);
-        textSize(12);
     }
-
 }

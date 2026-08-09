@@ -50,7 +50,7 @@ class GestorNotas {
 
             if (termino) {
                 if (this.tpoInicio === 0) {
-                    this.tpoInicio = millis() +this.tpoCaida;
+                    this.tpoInicio = millis() + this.tpoCaida;
                 }
                 else {
                     this.tpoInicio += millis() - this.tpoPausa;
@@ -68,6 +68,7 @@ class GestorNotas {
         }
 
         if (this.estado === "final") {
+            this.finPartida.update();
             return;
         }
 
@@ -80,12 +81,17 @@ class GestorNotas {
         this.actualizarNotas();
         this.eliminarNotas();
         this.particulas.update();
+
+        if (this.audioIniciado && !this.cancion.src.isPlaying() && this.notas.length === 0) {
+            this.estado = "final";
+            result.play();
+        }
     }
 
     draw() {
-        this.particulas.draw();
         this.interfaz.draw();
         this.dibujarNotas();
+        this.particulas.draw();
         this.puntos.draw();
 
         if (this.estado === "contador") {
@@ -95,7 +101,7 @@ class GestorNotas {
         if (this.estado === "pausa") {
             fill(this.rosa);
             stroke(255);
-            textSize(16);
+            textSize(width/43.5);//16
             text("Juego Pausado", width / 2, height * 0.15);
         }
         if (this.estado === "final") {
@@ -109,7 +115,7 @@ class GestorNotas {
             let datosNota = this.cancion.notas[this.indiceNota];
             let crear = datosNota.tiempo - this.tpoCaida; //calcula en que momento se tiene que crear la nota
 
-            if (this.tiempoActual() <= crear) { break; }
+            if (this.tiempoActual() < crear) { break; }
 
             this.notas.push(
                 new Nota(
@@ -134,7 +140,7 @@ class GestorNotas {
 
     eliminarNotas() {
         for (let i = this.notas.length - 1; i >= 0; i--) {
-            if (this.notas[i].y > this.zonaGolpe + 45) {
+            if (this.notas[i].y > this.zonaGolpe + 50) {
                 this.puntos.notaPerdida();
                 pressError.play();
                 this.notas.splice(i, 1);
@@ -143,6 +149,20 @@ class GestorNotas {
 
             if (!this.notas[i].activa) {
                 this.notas.splice(i, 1);
+            }
+        }
+    }
+
+    tocarCarril(carrilPres) {
+        for (let nota of this.notas) {
+            if (nota.carril == carrilPres) {
+                let acerto = this.puntos.precision(nota.y);
+
+                if (acerto) {
+                    this.particulas.crear(nota.x, nota.y);
+                    nota.activa = false;
+                }
+                break;
             }
         }
     }
@@ -171,22 +191,7 @@ class GestorNotas {
 
     reiniciar() {
         this.puntos.reiniciar();
-        this.reiniciarCancion();
         this.cargarCancion(this.cancion);
-    }
-
-    tocarCarril(carrilPres) {
-        for (let nota of this.notas) {
-            if (nota.carril == carrilPres) {
-                let acerto = this.puntos.precision(nota.y);
-
-                if (acerto) {
-                    this.particulas.crear(nota.x, nota.y);
-                    nota.activa = false;
-                }
-                break;
-            }
-        }
     }
 
     iniciarCancion() {

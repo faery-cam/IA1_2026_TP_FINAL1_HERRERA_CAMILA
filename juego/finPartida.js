@@ -1,9 +1,9 @@
 class FinPartida {
     constructor() {
-        this.fondo= new Fondo();
+        this.fondo = new Fondo();
 
-        this.btnInicio = new Boton(width * 0.51, height * 0.88, width * 0.22, height * 0.08, () => { this.onInicio(); });
-        this.btnSiguiente = new Boton(width * 0.75, height * 0.88, width * 0.22, height * 0.08, () => { this.onSiguiente(); });
+        this.btnInicio = new Boton(width * 0.51, height * 0.88, width * 0.22, height * 0.08, () => this.onInicio(), { click: menuSelect2 });
+        this.btnSiguiente = new Boton(width * 0.75, height * 0.88, width * 0.22, height * 0.08, () => this.onSiguiente(), { click: menuSelect });
 
         this.rosa = CONFIG.colores.rosa;
         this.menta = CONFIG.colores.menta;
@@ -31,51 +31,62 @@ class FinPartida {
         rect(width * 0.05, height * 0.15, width * 0.43, height * 0.78, 10); //rect izquierda blanco
 
         fill(20, 35, 30, 200);//lista negro transparente
-        rect(width * 0.02, height * 0.2, width * 0.49, height * 0.12, 7);
-        rect(width * 0.02, height * 0.35, width * 0.49, height * 0.12, 7);
-        rect(width * 0.02, height * 0.5, width * 0.49, height * 0.12, 7);
-        rect(width * 0.02, height * 0.65, width * 0.49, height * 0.12, 7);
+        rect(width * 0.02, height * 0.2, width * 0.49, height * 0.08, 7);
+        rect(width * 0.02, height * 0.3, width * 0.49, height * 0.08, 7);
+        rect(width * 0.02, height * 0.4, width * 0.49, height * 0.08, 7);
+        rect(width * 0.02, height * 0.5, width * 0.49, height * 0.08, 7);
+        rect(width * 0.02, height * 0.6, width * 0.49, height * 0.08, 7);
+        rect(width * 0.02, height * 0.7, width * 0.49, height * 0.08, 7);
 
         stroke(0);
         strokeWeight(1);
         textSize(width / 44);
         textAlign(LEFT);
         fill(255, 60, 180); //rosa
-        text("Perfect", width * 0.06, height * 0.26);
+        text("Perfect", width * 0.06, height * 0.24);
         fill(60, 210, 200); //celeste
-        text("Great", width * 0.06, height * 0.41);
+        text("Great", width * 0.06, height * 0.34);
+        fill(206, 236, 54);//verde lima
+        text("Good", width * 0.06, height * 0.44);
+        fill(239, 46, 46);//rojo
+        text("Bad", width * 0.06, height * 0.54);
         fill(150, 50, 255); //morado
-        text("Miss", width * 0.06, height * 0.56);
+        text("Miss", width * 0.06, height * 0.64);
         fill(250, 230, 100);
-        text("Combo máximo", width * 0.06, height * 0.71);
+        text("Combo máximo", width * 0.06, height * 0.74);
         stroke(this.rosa);
         strokeWeight(3);
         fill(255);
         textSize(width / 36);
-        text("Puntuación", width * 0.06, height * 0.85);
+        text("Puntuación", width * 0.06, height * 0.87);
 
         stroke(0);
         strokeWeight(1);
         textSize(width / 44);
         textAlign(RIGHT);
         fill(255, 60, 180); //rosa
-        text(puntos.perfect, width * 0.47, height * 0.26);//PERFECT
+        text(puntos.perfect, width * 0.47, height * 0.24);//PERFECT
         fill(60, 210, 200); //celeste
-        text(puntos.good, width * 0.47, height * 0.41);//GODD
+        text(puntos.great, width * 0.47, height * 0.34);//GREAT
+        fill(206, 236, 54);//verde lima
+        text(puntos.good, width * 0.47, height * 0.44);//GOOD
+        fill(239, 46, 46);//rojo
+        text(puntos.bad, width * 0.47, height * 0.54);//BAD
         fill(150, 50, 255); //morado
-        text(puntos.miss, width * 0.47, height * 0.56);//MISS
+        text(puntos.miss, width * 0.47, height * 0.64);//MISS
         fill(250, 230, 100);
-        text(puntos.maxCombo, width * 0.47, height * 0.71);//MAX COMBO
+        text(puntos.maxCombo, width * 0.47, height * 0.74);//MAX COMBO
         stroke(this.rosa);
         strokeWeight(3);
         fill(255);
         textSize(width / 36);
-        text(puntos.puntaje, width * 0.47, height * 0.85); //PUNTAJE TOTAL
+        text(puntos.puntaje, width * 0.47, height * 0.87); //PUNTAJE TOTAL
 
         /* ===============BOTONES=============== */
-        fill(this.menta);
         stroke(255);
+        fill(this.btnInicio.isHover() ? this.rosa : this.menta);
         rect(width * 0.51, height * 0.88, width * 0.22, height * 0.08, 7);
+        fill(this.btnSiguiente.isHover() ? this.rosa : this.menta);
         rect(width * 0.75, height * 0.88, width * 0.22, height * 0.08, 7);
 
         textAlign(CENTER);
@@ -96,6 +107,6 @@ class FinPartida {
         this.btnSiguiente.update();
     }
 
-    onInicio() { }
-    onSiguiente() { }
+    onInicio(){}
+    onSiguiente(){}
 }

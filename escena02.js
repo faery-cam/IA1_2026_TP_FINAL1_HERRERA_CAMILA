@@ -85,5 +85,6 @@ class Nivel_01 extends EscenaGeneral {
             return;
         }
         super.mouseClicked();
+        this.gestor.finPartida.mouseClicked();
     }
 }
