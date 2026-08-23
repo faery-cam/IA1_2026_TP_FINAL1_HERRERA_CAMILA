@@ -11,6 +11,10 @@ class PantallaFinal extends EscenaGeneral {
     
     draw() {
         super.draw();
-        text('pantalla final', 10, 200);
+        this.hud.draw();
+    }
+    update(){
+        super.update();
+        this.hud.update();
     }
 }

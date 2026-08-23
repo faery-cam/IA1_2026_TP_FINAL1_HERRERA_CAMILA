@@ -28,7 +28,7 @@ class PantallaInicio extends EscenaGeneral {
         textAlign(CENTER);
         stroke(255);
         strokeWeight(3);
-        fill(...this.rosa);
+        fill(this.rosa);
         text("Dj-TSUKI", width / 2, height / 8);
 
         strokeWeight(1);

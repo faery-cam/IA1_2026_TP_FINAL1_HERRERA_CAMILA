@@ -8,13 +8,13 @@ class Configuracion {
     }
 
     aplicar() {
-       for (let m of menuMusica) {
+        for (let m of menuMusica) {
             m.setVolume(this.volMusica);
         }
         for (let c of cancionesJuego) {
             c.setVolume(this.volJuego);
         }
-          for (let e of efectosSonido) {
+        for (let e of efectosSonido) {
             e.setVolume(this.volFX);
         }
     }

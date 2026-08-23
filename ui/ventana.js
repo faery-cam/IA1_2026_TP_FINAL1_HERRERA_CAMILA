@@ -13,7 +13,6 @@ class Ventana {
 
         this.alConfirmar = () => { };
         this.alCerrar = () => { };
-
     }
 
     open(estado) {
@@ -74,6 +73,9 @@ class Ventana {
     mouseClicked() {
         switch (this.estado) {
             case "elegirNivel":
+                this.btnNivel1.mouseClicked();
+                this.btnNivel2.mouseClicked();
+                this.btnNivel3.mouseClicked();
                 this.btnX.mouseClicked();
                 break;
 
@@ -88,6 +90,7 @@ class Ventana {
                 break;
 
             case "extras":
+                this.btnGithub.mouseClicked();
                 this.btnCerrar.mouseClicked();
                 break;
 
@@ -112,6 +115,9 @@ class Ventana {
     update() {
         switch (this.estado) {
             case "elegirNivel":
+                this.btnNivel1.update();
+                this.btnNivel2.update();
+                this.btnNivel3.update();
                 this.btnX.update();
                 break;
 
@@ -126,6 +132,7 @@ class Ventana {
                 break;
 
             case "extras":
+                this.btnGithub.update();
                 this.btnCerrar.update();
                 break;
 
@@ -150,10 +157,12 @@ class Ventana {
         fill(40, 60, 50)
         this.dibujarMarco(width * 0.1, height * 0.2, width * 0.4, height * 0.7);
 
-        fill(this.menta);
         noStroke();
+        fill(this.btnNivel1.isHover() ? this.rosa : this.menta);
         rect(width * 0.12, height * 0.34, width * 0.16, height * 0.2, 10);
+        fill(this.btnNivel2.isHover() ? this.rosa : this.menta);
         rect(width * 0.32, height * 0.34, width * 0.16, height * 0.2, 10);
+        fill(this.btnNivel3.isHover() ? this.rosa : this.menta);
         rect(width * 0.12, height * 0.59, width * 0.16, height * 0.2, 10);
 
         fill(255)
@@ -165,9 +174,9 @@ class Ventana {
         textAlign(CENTER);
         text("Elegir Nivel", width * 0.3, height * 0.3);
         textSize(width / 40);
-        text("Nivel 1", width * 0.2, height * 0.525);
-        text("Nivel 2", width * 0.4, height * 0.525);
-        text("Nivel 3", width * 0.2, height * 0.775);
+        text("Nivel 1", width * 0.2, height * 0.52);
+        text("Nivel 2", width * 0.4, height * 0.52);
+        text("Nivel 3", width * 0.2, height * 0.77);
 
         noStroke();
         fill(this.btnX.isHover() ? this.menta : this.rosa);
@@ -238,7 +247,6 @@ class Ventana {
         text("Informática Aplicada 1, 2026", width * 0.3, height * 0.3);
         text("Hecho por: Herrera Camila", width * 0.3, height * 0.5);
         text("GitHub del proyecto", width * 0.3, height * 0.6);
-
         fill(this.btnCerrar.isHover() ? this.menta : 255);
         text("Cerrar", width * 0.3, height * 0.85);
     }
@@ -317,6 +325,8 @@ class Ventana {
 
         this.btnAtras = new Boton(width * 0.3, height * 0.66, width * 0.4, height * 0.07, () => this.onAtras(), { click: menuCancel });
 
+        this.btnGithub = new Boton(width * 0.15, height * 0.55, width * 0.3, height * 0.08, () => window.open("https://github.com/faery-cam/IA1_2026_TP_FINAL1_HERRERA_CAMILA.git", "_blank"), { click: menuSelect2 });
+
         /* ==============BOTONES OPCIONES============== */
         this.btnReanudar = new Boton(width * 0.3, height * 0.3, width * 0.4, height * 0.07, () => this.onReanudar(), { click: menuSelect2 });
 
@@ -342,6 +352,12 @@ class Ventana {
             () => config.setVolFX(0.1), { click: timer });
         this.btnFxMenos = new Boton(width * 0.51, height * 0.54, width * 0.03, width * 0.03,
             () => config.setVolFX(-0.1), { click: timer });
+
+        //=======BOTONES ELEGIR NIVEL=========
+        this.btnNivel1 = new Boton(width * 0.12, height * 0.34, width * 0.16, height * 0.2, () => { mundo.elegirEscena(1), this.close() }, { click: menuSelect });
+        this.btnNivel2 = new Boton(width * 0.32, height * 0.34, width * 0.16, height * 0.2, () => { this.close() }, { click: menuSelect });
+        this.btnNivel3 = new Boton(width * 0.12, height * 0.59, width * 0.16, height * 0.2, () => { this.close() }, { click: menuSelect });
+
     }
 
     /* FUNCIONES VACIAS, son para darle al boton la accion que uno quiera desde el lugar donde se lo llama */
