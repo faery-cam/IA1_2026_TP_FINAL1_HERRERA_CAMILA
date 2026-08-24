@@ -92,7 +92,7 @@ class GestorNotas {/* objeto que gestiona el juego completo, se encarga de unir 
         }
     }
 
-    draw() {
+    draw() {/* dibujamos todo, los estados no definen si algo se ve o no, ya que la idea es que se siga viendo de fondo el juego pausado o la interfaz apenas empieza el juego  */
         this.interfaz.draw();
         this.dibujarNotas();
         this.particulas.draw();
@@ -114,7 +114,7 @@ class GestorNotas {/* objeto que gestiona el juego completo, se encarga de unir 
         }
     }
 
-    crearNotas() {
+    crearNotas() {/* crea las notas calculando lo que tardan en caer para q esten coordinadas con el momento que tienen que pasar por la zona de golpe, cada nota nueva la agrega al array de notas */
         while (this.indiceNota < this.cancion.notas.length) {
             let datosNota = this.cancion.notas[this.indiceNota];
             let crear = datosNota.tiempo - this.tpoCaida; //calcula en que momento se tiene que crear la nota
@@ -130,19 +130,19 @@ class GestorNotas {/* objeto que gestiona el juego completo, se encarga de unir 
         }
     }
 
-    actualizarNotas() {
+    actualizarNotas() {/* actualiza todas las notas que exitan */
         for (let nota of this.notas) {
             nota.update();
         }
     }
 
-    dibujarNotas() {
+    dibujarNotas() {/* dibuja todas las notas que exitan */
         for (let nota of this.notas) {
             nota.draw();
         }
     }
 
-    eliminarNotas() {
+    eliminarNotas() {/* recorre el array de notas y va borrando las que fueron perdidas (no se tocaron a tiempo) y las que ya fueron tocadas*/
         for (let i = this.notas.length - 1; i >= 0; i--) {
             if (this.notas[i].y > this.zonaGolpe + 50) {
                 this.puntos.notaPerdida();
@@ -157,7 +157,7 @@ class GestorNotas {/* objeto que gestiona el juego completo, se encarga de unir 
         }
     }
 
-    tocarCarril(carrilPres) {
+    tocarCarril(carrilPres) {/* revisa si coincide el carril/tecla con el carri de la nota existente y de ahi calcula que tan preciso se fue, luego si la nota se toco exitosamente se cambiasu estado a false para ser eliminada del mapa */
         for (let nota of this.notas) {
             if (nota.carril == carrilPres) {
                 let acerto = this.puntos.precision(nota.y);
@@ -171,38 +171,38 @@ class GestorNotas {/* objeto que gestiona el juego completo, se encarga de unir 
         }
     }
 
-    tiempoActual() {
+    tiempoActual() {/* devuelve cuanto tiempo paso desde que inicio la cancion */
         return millis() - this.tpoInicio;
     }
 
-    tiempoCaida() {
+    tiempoCaida() {/* calcula cuanto tarda en caer una nota en base a la distancia, fps, y velocidad */
         let distancia = this.zonaGolpe - this.spawnY;
         let segundos = (distancia / this.cancion.velocidad) / fps;
         this.tpoCaida = segundos * 1000; //pasa de segundos a milisegundos
     }
 
-    pausar() {
+    pausar() {/* pasa la cancion, cambia el estado y guarda el momento en que el juego fue pausado */
         this.estado = "pausa";
         this.cancion.src.pause();
         this.tpoPausa = millis();
         pause.play();
     }
 
-    reanudar() {
+    reanudar() {/* cambia el estado y reinicia contador */
         this.estado = "contador";
         this.contador.reiniciar();
     }
 
-    reiniciar() {
+    reiniciar() {/* reinicia el nivel completo, tanto puntos como inicio de cancion */
         this.puntos.reiniciar();
         this.cargarCancion(this.cancion);
     }
 
-    iniciarCancion() {
+    iniciarCancion() {/* inicia la cancion, tambien sirve para volver de la pausa */
         this.cancion.src.play();
     }
 
-    reiniciarCancion() {
+    reiniciarCancion() {/* detien la cancion para empezar de cero */
         this.cancion.src.stop();
     }
 }
