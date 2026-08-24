@@ -1,8 +1,8 @@
 class PantallaFinal extends EscenaGeneral {
     constructor() {
         super();
-
-        this.volverInicio = new Boton(width * 0.5, height * 0.35, width * 0.4, height * 0.09, () => mundo.elegirEscena(0), { click: menuSelect });
+        /* botones de la pantalla final */
+        this.volverInicio = new Boton(width * 0.5, height * 0.35, width * 0.4, height * 0.09, () => { mundo.elegirEscena(0), this.musica.detener() }, { click: menuSelect });
         this.elegirNivel = new Boton(width * 0.5, height * 0.50, width * 0.4, height * 0.09, () => this.ventana.open("elegirNivel"), { click: menuSelect });
         this.configuracion = new Boton(width * 0.5, height * 0.65, width * 0.4, height * 0.09, () => this.ventana.open("configUI"), { click: menuSelect });
 
@@ -13,7 +13,7 @@ class PantallaFinal extends EscenaGeneral {
         this.hud.onConfig = () => this.ventana.open("configUI");
     }
 
-    entrar() {
+    entrar() {/* lo primero q ocurre al entrar a esta escena */
         this.musica.update();
     }
 

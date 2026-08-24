@@ -1,5 +1,4 @@
-
-class Ventana {
+class Ventana {/* objeto para todas las ventanas emergentes que pueden aparecer */
     constructor() {
         this.estado = null;
         this.x = 0;
@@ -12,21 +11,22 @@ class Ventana {
         this.menta = CONFIG.colores.menta;
         this.volumen = CONFIG.volumen;
 
+        /* callbacks */
         this.alConfirmar = () => { };
         this.alCerrar = () => { };
     }
 
-    open(estado) {
+    open(estado) {/* cambia el estado, de esta forma decide que ventana se dibuja */
         this.estado = estado;
     }
 
-    close() {
+    close() {/* que tiene que pasar cuando se cierra una ventana */
         this.estado = null;
         menuCancel.play();
         this.alCerrar();
     }
 
-    draw() {
+    draw() {/* dibuja segun el estado en el que se encuentre */
         if (this.estado === null) return;
 
         switch (this.estado) {
@@ -56,7 +56,7 @@ class Ventana {
         }
     }
 
-    dibujarMarco(x, y, w, h) {
+    dibujarMarco(x, y, w, h) {/* nos dibuja un rect con los parametro que le pasemos, y tambien los guarda. sirve mas adelante para diferenciar los clicks fuera/dentro */
         this.x = x;
         this.y = y;
         this.w = w;
@@ -64,14 +64,14 @@ class Ventana {
         rect(x, y, w, h, 10);
     }
 
-    clickFuera() {
+    clickFuera() {/* detecta clicks por fuera, devuelve bool */
         return (
             mouseX < this.x || mouseX > this.x + this.w ||
             mouseY < this.y || mouseY > this.y + this.h
         );
     }
 
-    mouseClicked() {
+    mouseClicked() {/* maneja clicks de botones segun el estado en el que se encuentre */
         switch (this.estado) {
             case "elegirNivel":
                 this.btnNivel1.mouseClicked();
@@ -113,7 +113,7 @@ class Ventana {
         }
     }
 
-    update() {
+    update() {/* actualiza los botones segun el estado en el que se encuentre */
         switch (this.estado) {
             case "elegirNivel":
                 this.btnNivel1.update();
@@ -152,6 +152,8 @@ class Ventana {
     }
 
     //==============VENTANAS=================
+    /* metodos para dibujar cada ventana */
+
     comoJugar() { }
 
     elegirNivel() {
@@ -299,8 +301,8 @@ class Ventana {
         text("Reintentar", width / 2, height * 0.46);
         text("Configuración", width / 2, height * 0.58);
         text("Inicio", width / 2, height * 0.7);
-
     }
+
     /* =========================SOLO BOTONES========================== */
     crearBotones() {
         this.btnX = new Boton(width * 0.45, height * 0.22, width * 0.04, height * 0.06, () => {

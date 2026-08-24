@@ -1,4 +1,4 @@
-class Puntos {
+class Puntos {/* objeto para ir guardando la puntuacion del nivelq se este jugando */
     constructor() {
         this.zonaGolpe = zonaGolpeJuego;
         this.combo = 0;
@@ -16,7 +16,7 @@ class Puntos {
         this.y;
     }
 
-    draw() {
+    draw() {/* dibuja un pequeño feedback que le da a saberr al usuario que tan bien tocó la nota */
         if (!this.feedback) return;
 
         //======= Perfect, Good, Miss
@@ -90,7 +90,7 @@ class Puntos {
         return false;
     }
 
-    notaPerdida() {
+    notaPerdida() {/* lo que ocurre al perder una nota, eso lo maneja el gestor de notas */
         this.mostrarFeedback("Miss");
         this.miss++;
         pressError.play();
@@ -99,7 +99,7 @@ class Puntos {
     }
 
     sumarCombo(acierto) {
-        //por cada miss se pierde el combo, siempre que sea good o perfect el combo sigue sumando 1.
+        //por cada miss se pierde el combo, siempre que sea good, great o perfect el combo sigue sumando 1.
         if (acierto) {
             this.combo++;
             if (this.combo > this.maxCombo) {
@@ -110,13 +110,13 @@ class Puntos {
         }
     }
 
-    mostrarFeedback(texto) {
+    mostrarFeedback(texto) {/* define los datos para el feedback, cosa de que siempre esten "limpios" y no guarde por ej posiciones anteriores */
         this.feedback = texto;
         this.alpha = 255;
         this.y = height * 0.65;
     }
 
-    reiniciar() {
+    reiniciar() {/* se reestablecen todos los datos para una futura partida */
         this.combo = 0;
         this.maxCombo = 0;
         this.perfect = 0;

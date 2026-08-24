@@ -1,21 +1,24 @@
 //escena general donde definimos las propiedades base
 class EscenaGeneral {
     constructor() {
-        this.hud = new HUD(); //creamos el objeto que tiene el hud
-        
+        //creamos los objetos base que comparten todas las escenas
+        this.hud = new HUD();
         this.ventana = new Ventana();
         this.musica = new Musica();
         this.fondo = new Fondo();
 
+        //definimos los dos colores base para poder usarlos comodamente donde sea necesario en todas las escenas
         this.rosa = CONFIG.colores.rosa;
         this.menta = CONFIG.colores.menta;
     }
 
+    //dibuja
     draw() {
         this.ventana.draw();
         this.update();
     }
 
+    //actualiza el estado
     update() {
         if (this.ventana.estado !== null) {
             this.ventana.update();
@@ -33,7 +36,7 @@ class EscenaGeneral {
         }
     }
 
-    //maneja los clicks
+    //maneja los clicks, en caso de estar con una "ventana" abierta, los botones que se encuentren por debajo no reaccionan
     mouseClicked() {
         if (this.ventana.estado !== null) {
             this.ventana.mouseClicked();

@@ -1,9 +1,9 @@
-class GestorParticulas {
+class GestorParticulas {/* objeto para gestionar particulas */
     constructor() {
         this.particulas = [];
     }
 
-    crear(x, y) {
+    crear(x, y) {/* se crean las particulas en base a la posicion que nos pase el gestor de notas */
         for (let i = 0; i < 15; i++) {
             this.particulas.push(
                 new Particula(x, y)
@@ -11,13 +11,13 @@ class GestorParticulas {
         }
     }
 
-    draw() {
+    draw() {/* dibuja las particulas */
         for (let p of this.particulas) {
             p.draw();
         }
     }
 
-    update() {
+    update() {/* actualiza las particulas y las va eliminando del array a medida que ".existe" avise (es una flag) */
         for (let p of this.particulas) {
             p.update();
         }

@@ -1,4 +1,4 @@
-class Teclas {
+class Teclas {/* objeto parra manejar las teclas dentro del juego, datos q luego le manda al gestor */
     constructor(gestor) {
         this.gestor = gestor;
     }

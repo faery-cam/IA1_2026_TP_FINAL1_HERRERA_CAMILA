@@ -2,18 +2,19 @@ class PantallaInicio extends EscenaGeneral {
     constructor() {
         super();
 
+        //botones para todas las opciones dentro de esta escena
         this.jugar = new Boton(width * 0.1, height * 0.25, width * 0.4, height * 0.09, () => mundo.elegirEscena(1), { click: menuSelect });
         this.comoJugar = new Boton(width * 0.1, height * 0.36, width * 0.4, height * 0.09, () => this.ventana.open("comoJugar"), { click: menuSelect });
         this.elegirNivel = new Boton(width * 0.1, height * 0.47, width * 0.4, height * 0.09, () => this.ventana.open("elegirNivel"), { click: menuSelect });
         this.configuracion = new Boton(width * 0.1, height * 0.59, width * 0.4, height * 0.09, () => this.ventana.open("configUI"), { click: menuSelect });
         this.extras = new Boton(width * 0.1, height * 0.70, width * 0.4, height * 0.09, () => this.ventana.open("extras"), { click: menuSelect });
 
-        //boton de configuracion
+        //boton dentro de configuracion
         this.ventana.onAtras = () => { this.ventana.close(); }
     }
 
+    /* lo primero que ocurre al entrar a esta escena */
     entrar() {
-        this.musica.detener();
         this.musica.reproducir();
     }
 
@@ -32,6 +33,7 @@ class PantallaInicio extends EscenaGeneral {
         rect(width * 0.13, height * 0.2, width * 0.34, height * 0.64, 10);
 
         noStroke();
+        /* cambia el color segun si esta sobre ese boton, se repite este mismo patron varias veces por todo el juego */
         fill(this.jugar.isHover() ? this.rosa : 20, 45, 30);
         rect(width * 0.1, height * 0.25, width * 0.4, height * 0.09, 5);
         fill(this.comoJugar.isHover() ? this.rosa : 20, 45, 30);
@@ -54,11 +56,11 @@ class PantallaInicio extends EscenaGeneral {
         text("Configuración", width * 0.15, height * 0.65);
         text("Extras", width * 0.15, height * 0.76);
 
-        this.musica.miniReproductor();
+        this.musica.miniReproductor(); /* dibuja unas flechitas para pasar las canciones del inicio */
         super.draw();
     }
 
-    update() {
+    update() {/* actualiza todos los estados de botones y ventanas que exitan */
         this.musica.update();
         if (this.ventana.estado !== null) {
             super.update();
@@ -73,7 +75,7 @@ class PantallaInicio extends EscenaGeneral {
         this.extras.update();
     }
 
-    mouseClicked() {
+    mouseClicked() {/* maneja los clicks, en caso de estar dentro de una ventana solo  tomas los clicks que le correspondan a esa ventana abierta*/
         if (this.ventana.estado !== null) {
             super.mouseClicked();
             return;
@@ -88,7 +90,7 @@ class PantallaInicio extends EscenaGeneral {
         this.musica.mouseClicked();
     }
 
-    keyPressed(key, keyCode) {
+    keyPressed(key, keyCode) {/* maneja las teclas presionadas */
         super.keyPressed(key, keyCode);
     }
 }

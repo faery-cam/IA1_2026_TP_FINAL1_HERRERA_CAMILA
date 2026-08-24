@@ -1,3 +1,4 @@
+/* declaracion de variables */
 const mundo = new Mundo();
 const canciones = new Canciones();
 
@@ -21,18 +22,21 @@ function preload() {
   cargarAudios();
   cargarImagenes();
 
+  /* aplicamos la configuracion base del juego para que quede globalizada desde un inicio */
   config.aplicar();
 }
 
 function setup() {
   createCanvas(700, 400);
 
+  /* aplicamos el font */
   textFont('Zen Dots');
 
+  /* le decimos de que manera se deben comportar estos audios (para que no se repitan muchos en simultaneo) */
   menuMove.playMode('restart');
   menuSelect.playMode('restart');
 
-
+  /* definimos parametros bases del juego */
   zonaGolpeJuego = height * 0.75;
   carrilesJuego = [width * 0.31, width * 0.435, width * 0.56, width * 0.68];
 
@@ -42,6 +46,7 @@ function setup() {
   mundo.addEscena(new PantallaFinal());
 }
 
+//se dibuja la escena que tenga guardada mundo con un fondo base (color predefinido en 'configBase')
 function draw() {
   background(CONFIG.colores.menta);
   mundo.escenaActual.draw();
@@ -57,6 +62,7 @@ function keyPressed() {
   mundo.escenaActual.keyPressed(key, keyCode);
 }
 
+/* usamos loadSound para cargar todos  los audios utilizados, esta en una funcion aparte por un cuestion de prolijidad */
 function cargarAudios() {
   levelSelect = loadSound('assets/audio/levelSelect.wav');
   menuCancel = loadSound('assets/audio/menuCancel.wav');
@@ -71,7 +77,6 @@ function cargarAudios() {
   timer = loadSound('assets/audio/timer.wav');
 
   efectosSonido = [levelSelect, menuCancel, menuMove, menuSelect, menuSelect2, pause, pressError, pressNote, pressNote2, result, timer];
-
 
   menuMusica.push(loadSound('assets/audio/menuMusica/Cautivadora gelatina de cafe.mp3'));
   menuMusica.push(loadSound('assets/audio/menuMusica/Lingering among flowers.mp3'));
@@ -89,6 +94,7 @@ function cargarAudios() {
   cancionesJuego.push(loadSound('assets/audio/canciones/Dec. - Kanaria.mp3'));
 }
 
+/* igual que la funcion anterior, pero para cargar las imagenes */
 function cargarImagenes() {
   fondos.push(loadImage('assets/img/fondos/BG01.png'));
   fondos.push(loadImage('assets/img/fondos/BG02.png'));

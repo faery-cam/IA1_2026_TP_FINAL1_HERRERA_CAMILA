@@ -1,4 +1,4 @@
-class InterfazJuego {
+class InterfazJuego {/* lo que ve el usuario, aca se muestran los datos a medida avanza el juego y se actualiza la escena */
     constructor() {
         this.rosa = CONFIG.colores.rosa;
         this.menta = CONFIG.colores.menta;
@@ -9,12 +9,12 @@ class InterfazJuego {
         this.puntaje = 0;
     }
 
-    subirCancion(cancion, nivel) {
+    subirCancion(cancion, nivel) {/* guardamos datos que despues se utilizan en el ui */
         this.nombreCancion = cancion;
         this.numNivel = nivel;
     }
 
-    update(combo, puntaje) {
+    update(combo, puntaje) {/* actualiza los datos */
         this.combo = combo;
         this.puntaje = puntaje;
     }
@@ -88,7 +88,7 @@ class InterfazJuego {
         textSize(width / 45);
         stroke(...this.menta, 200);
         strokeWeight(1);
-        fill(...this.menta, 100)
+        fill(...this.menta, 100)//teclas en pantalla parra guiar al usuario
         text("D", width * 0.31, height * 0.82);
         text("F", width * 0.435, height * 0.82);
         text("J", width * 0.56, height * 0.82);

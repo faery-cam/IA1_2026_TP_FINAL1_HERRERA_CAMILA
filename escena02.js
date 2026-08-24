@@ -1,12 +1,12 @@
 class Nivel_01 extends EscenaGeneral {
     constructor() {
         super();
-
+        /* se crean los objetos necesarios para el nivel */
         this.gestor = new GestorNotas();
         this.teclas = new Teclas(this.gestor);
-        this.ventana.alCerrar = () => { this.gestor.reanudar(); };
+        this.ventana.alCerrar = () => { this.gestor.reanudar(); };/* le decimos a ventana de que manera comportarse al ser cerrada */
 
-        //botones HUD
+        //botones del HUD, le damos un comportamiento a todos los botones, que es la de pausar el juego y dar una advertencia antes de proceder
         this.hud.onInicio = () => {
             this.gestor.pausar();
             this.ventana.alConfirmar = () => { this.gestor.reiniciar(); mundo.elegirEscena(0); };
@@ -27,7 +27,7 @@ class Nivel_01 extends EscenaGeneral {
             this.ventana.open("opciones");
         };
 
-        /* Botones OPCIONES */
+        /* Botones OPCIONES, estan en caso de que queramos salir del nivel, reiniciarlo o usar la configuracion */
         this.ventana.onAtras = () => { this.ventana.open("opciones"); };
         this.ventana.onReanudar = () => { this.ventana.close(); };
         this.ventana.onReiniciar = () => {
@@ -65,7 +65,7 @@ class Nivel_01 extends EscenaGeneral {
         this.hud.update();
     }
 
-    keyPressed() {
+    keyPressed() {/* agregamos callbacks a las flechas para que no salga de manera inmediata del nivel por error, y maneja teclas nuevas que son las del nivel */
         if (keyCode === LEFT_ARROW) {
             this.gestor.pausar();
             this.ventana.alConfirmar = () => { mundo.escenaPrevia(); };
@@ -79,7 +79,7 @@ class Nivel_01 extends EscenaGeneral {
         this.teclas.keyPressed(key);
     }
 
-    mouseClicked() {
+    mouseClicked() {/* agrega el manejo de clicks para una pestaña del final */
         if (this.ventana.estado !== null) {
             super.mouseClicked();
             return;

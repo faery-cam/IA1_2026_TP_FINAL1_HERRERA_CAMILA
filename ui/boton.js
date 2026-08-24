@@ -10,7 +10,7 @@ class Boton {
         this.hizoHover = false;
     }
 
-    update() {
+    update() {/* reproduciomos un sonido cuando se pasa  por encima del boton, esta hecho para que suene una sola vez usando flags */
         let hover = this.isHover();
         if (hover && !this.hizoHover) {
             menuMove.play();

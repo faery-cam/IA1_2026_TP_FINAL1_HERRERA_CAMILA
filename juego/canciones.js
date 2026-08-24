@@ -1,4 +1,4 @@
-class Canciones {
+class Canciones {/* mapas de cada cancion, con los datos base que le corresponden */
     nivel_1() {
         return {
             nombre: "Girl Like Me - PinkPhanteress",

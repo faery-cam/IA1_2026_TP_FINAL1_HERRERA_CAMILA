@@ -1,7 +1,8 @@
-class FinPartida {
+class FinPartida {/* objeto para mostrar las estadisticas al final de la partida */
     constructor() {
         this.fondo = new Fondo();
 
+        /* botones */
         this.btnInicio = new Boton(width * 0.51, height * 0.88, width * 0.22, height * 0.08, () => this.onInicio(), { click: menuSelect2 });
         this.btnSiguiente = new Boton(width * 0.75, height * 0.88, width * 0.22, height * 0.08, () => this.onSiguiente(), { click: menuSelect });
 
@@ -9,7 +10,7 @@ class FinPartida {
         this.menta = CONFIG.colores.menta;
     }
 
-    draw(puntos, nombre, nivel) {
+    draw(puntos, nombre, nivel) {/* dibuja utilizando los datos que se le mandan desde el gestor */
         noStroke();
         fill(this.rosa);
         rect(0, 0, width, height);//fondo rosa
@@ -97,16 +98,17 @@ class FinPartida {
         text("Siguiente Nivel", width * 0.86, height * 0.92);
     }
 
-    mouseClicked() {
+    mouseClicked() {/* maneja clicks */
         this.btnInicio.mouseClicked();
         this.btnSiguiente.mouseClicked();
     }
 
-    update() {
+    update() {/* actualiza */
         this.btnInicio.update();
         this.btnSiguiente.update();
     }
 
-    onInicio(){}
-    onSiguiente(){}
+    /* FUNCIONES VACIAS, son callbacks */
+    onInicio() { }
+    onSiguiente() { }
 }

@@ -1,4 +1,4 @@
-class HUD {
+class HUD {/* objeto para tener siempre a mano las opciones basicas como recorrer el sketch o entrar a configurracion o volver al inicio */
     constructor() {
         this.y = CONFIG.hud.y;
         this.size = CONFIG.hud.size;

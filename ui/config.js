@@ -1,4 +1,4 @@
-class Configuracion {
+class Configuracion {/* lógica de la configuracion dentro el juego */
     constructor() {
         this.volMusica = 0.2;
         this.volJuego = 0.5;
@@ -7,7 +7,7 @@ class Configuracion {
         this.aplicar();
     }
 
-    aplicar() {
+    aplicar() {/* aplica los valores base definidos en el constructor */
         for (let m of menuMusica) {
             m.setVolume(this.volMusica);
         }
@@ -19,6 +19,7 @@ class Configuracion {
         }
     }
 
+    /* estos tres metodos solo aplican los nuevos valores, dejan de sumar/restar una vez llegado el tope */
     setVolMusica(valor) {
         this.volMusica += valor;
 
