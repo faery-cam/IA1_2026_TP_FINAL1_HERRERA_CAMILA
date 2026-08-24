@@ -10,6 +10,7 @@ class Ventana {
 
         this.rosa = CONFIG.colores.rosa;
         this.menta = CONFIG.colores.menta;
+        this.volumen = CONFIG.volumen;
 
         this.alConfirmar = () => { };
         this.alCerrar = () => { };
@@ -339,19 +340,19 @@ class Ventana {
         //=======BOTONES CONFIGURACION=========
         /* FILA 1 */
         this.btnMenuMas = new Boton(width * 0.64, height * 0.3, width * 0.04, width * 0.03,
-            () => config.setVolMusica(0.1), { click: timer });
+            () => config.setVolMusica(this.volumen), { click: timer });
         this.btnMenuMenos = new Boton(width * 0.51, height * 0.3, width * 0.03, width * 0.03,
-            () => config.setVolMusica(-0.1), { click: timer });
+            () => config.setVolMusica(-this.volumen), { click: timer });
         /* FILA 2 */
         this.btnJuegoMas = new Boton(width * 0.64, height * 0.42, width * 0.04, width * 0.03,
-            () => config.setVolJuego(0.1), { click: timer });
+            () => config.setVolJuego(this.volumen), { click: timer });
         this.btnJuegoMenos = new Boton(width * 0.51, height * 0.42, width * 0.03, width * 0.03,
-            () => config.setVolJuego(-0.1), { click: timer });
+            () => config.setVolJuego(-this.volumen), { click: timer });
         /* FILA 3 */
         this.btnFxMas = new Boton(width * 0.64, height * 0.54, width * 0.04, width * 0.03,
-            () => config.setVolFX(0.1), { click: timer });
+            () => config.setVolFX(this.volumen), { click: timer });
         this.btnFxMenos = new Boton(width * 0.51, height * 0.54, width * 0.03, width * 0.03,
-            () => config.setVolFX(-0.1), { click: timer });
+            () => config.setVolFX(-this.volumen), { click: timer });
 
         //=======BOTONES ELEGIR NIVEL=========
         this.btnNivel1 = new Boton(width * 0.12, height * 0.34, width * 0.16, height * 0.2, () => { mundo.elegirEscena(1), this.close() }, { click: menuSelect });

@@ -8,16 +8,12 @@ class PantallaInicio extends EscenaGeneral {
         this.configuracion = new Boton(width * 0.1, height * 0.59, width * 0.4, height * 0.09, () => this.ventana.open("configUI"), { click: menuSelect });
         this.extras = new Boton(width * 0.1, height * 0.70, width * 0.4, height * 0.09, () => this.ventana.open("extras"), { click: menuSelect });
 
-        //botones HUD
-        this.hud.onInicio = () => mundo.elegirEscena(0);
-        this.hud.onPrev = () => mundo.escenaPrevia();
-        this.hud.onSig = () => mundo.escenaSiguiente();
-        this.hud.onConfig = () => this.ventana.open("configuracion");
         //boton de configuracion
         this.ventana.onAtras = () => { this.ventana.close(); }
     }
 
     entrar() {
+        this.musica.detener();
         this.musica.reproducir();
     }
 

@@ -13,5 +13,6 @@ const CONFIG = {
     colores: {
         rosa: [255, 40, 130],
         menta: [40, 255, 160],
-    }
+    },
+    volumen: 0.05,
 }

@@ -43,24 +43,24 @@ class InterfazJuego {
             height * 0.9
         ); //barra de puntaje
 
-        fill(...this.menta);
+        fill(this.menta);
         rect(0, height * 0.9, width, height); //barra inferior
 
         stroke(255);
         fill(20, 45, 30);
         rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02);
-        fill(...this.rosa);
+        fill(this.rosa);
         rect(width * 0.15, height * 0.97, width * 0.83, height * 0.02); //barra de la cancion (tiempo d duracion)
 
         fill(70);
         circle(height * 0.1, height * 0.9, height / 4); //zona donde muestra el combo
 
-        fill(...this.menta);
+        fill(this.menta);
         circle(height * 0.1, height * 0.9, height / 8); //circulo mas chico
 
         noStroke();
 
-        fill(...this.rosa);
+        fill(this.rosa);
         textAlign(LEFT, CENTER);
         textSize(width / 60); //(15-14)
         text(this.nombreCancion, 30, height * 0.05);  //nombre  de la cancion
@@ -75,7 +75,7 @@ class InterfazJuego {
         fill(255);
         text("Puntuación", width * 0.98, height * 0.875);
 
-        fill(...this.rosa);
+        fill(this.rosa);
         textAlign(CENTER);
         text("COMBO", height * 0.1, height * 0.82);
 
@@ -84,7 +84,14 @@ class InterfazJuego {
         textSize(width / 24); //(25)
         text(this.combo, height * 0.1, height * 0.9);
 
-        /* mando algunos valores en predeterminado para evitar fallos en otras zonas */
+        textAlign(CENTER);
+        textSize(width / 45);
+        stroke(...this.menta, 200);
         strokeWeight(1);
+        fill(...this.menta, 100)
+        text("D", width * 0.31, height * 0.82);
+        text("F", width * 0.435, height * 0.82);
+        text("J", width * 0.56, height * 0.82);
+        text("K", width * 0.685, height * 0.82);
     }
 }
